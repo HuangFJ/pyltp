@@ -17,6 +17,7 @@ distclean:
 	@- $(RM) ./build/Makefile
 	@- $(RM) ./build/src
 	@- $(RM) ./build/ltp
+	@- $(RM) ./build/boost_python
 	@- $(RM) ./build/CMake*
 	@- $(RM) ./build/cmake.*
 	@- $(RM) ./build/*.cmake
