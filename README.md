@@ -6,7 +6,9 @@ pyltp
 依赖
 ----
 
-- python2.7
+- python
+- cmake 2.8
+- boost 1.53
 - gfortran （可选）
 
 编译
@@ -15,6 +17,19 @@ pyltp
 ```
 $ git clone --recursive https://github.com/HuangFJ/pyltp
 $ cd pyltp
+```
+编辑CMakeLists.txt，配置boost和python参数
+
+```
+# -- config python directories
+set (PYTHON_INCLUDE_DIR     /usr/local/python-2.7/include/python2.7)
+set (PYTHON_LIBRARY_PATH    /usr/local/python-2.7/lib/libpython2.7.a)
+
+# -- config boost directories
+set (BOOST_INCLUDE_DIR     /usr/local/boost_1_53_0/)
+```
+
+```
 $ ./configure
 $ make
 ```
