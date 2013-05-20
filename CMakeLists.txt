@@ -28,7 +28,7 @@ set (PYTHON_INCLUDE_DIR     /usr/local/python2.7/include/python2.7)
 set (PYTHON_LIBRARY_PATH    /usr/local/python2.7/lib/libpython2.7.a)
 
 # -- config boost directories
-set (BOOST_INCLUDE_DIR     /usr/local/boost1.53/include/boost)
+set (BOOST_INCLUDE_DIR     /usr/local/boost1.53/include)
 
 # compiling section
 # -- compile shipped libraries
