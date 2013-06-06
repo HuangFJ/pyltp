@@ -1,7 +1,7 @@
 pyltp
 ----
 
-<a href="https://github.com/HIT-SCIR/ltp">LTP</a> wrapper module for Python.
+<a href="https://github.com/HIT-SCIR/ltp">LTP</a> 的 Python 封装。
 
 依赖
 ----
