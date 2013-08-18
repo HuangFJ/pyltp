@@ -51,3 +51,5 @@ $ python
 >>> ltp.ner(u'元芳你怎么看？'.encode('gbk'))
 >>> ltp.srl(u'元芳你怎么看？'.encode('gbk'))
 ```
+
+应注意获得的结果是gbk编码，所以要在你的代码中还要把gbk再转回utf－8
