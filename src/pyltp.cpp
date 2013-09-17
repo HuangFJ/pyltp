@@ -4,138 +4,81 @@
 #include "Ltp.h"
 
 using namespace boost::python;
-static XML4NLP xml4nlp;
-//static LTP ltp(xml4nlp);
 
 struct PyLTP
 {
 private:
+	XML4NLP xml4nlp;
 	LTP ltp;
 
 public:
+	PyLTP(): ltp(xml4nlp){}
 	PyLTP(string config_file): ltp(config_file.c_str(), xml4nlp){}
 
-	boost::python::list ws(string mMsg){
-		boost::python::list r;
+	string ws(string mMsg){
 		xml4nlp.CreateDOMFromString(mMsg);
 
 		ltp.wordseg();
-		int wordNum = xml4nlp.CountWordInDocument();
-		for (int i = 0; i < wordNum; ++i)
-		{
-			string word = xml4nlp.GetWord(i);
-			if (! word.empty())
-			{
-				r.append(word);
-			}
-		}
+		string result;
+		xml4nlp.SaveDOM(result);
+		xml4nlp.ClearDOM();
 
-		return r;
+		return result;
 	}
 
-	boost::python::list pos(string mMsg){
-		boost::python::list r;
+	string pos(string mMsg){
 		xml4nlp.CreateDOMFromString(mMsg);
 
 		ltp.postag();
-		int wordNum = xml4nlp.CountWordInDocument();
-		for (int i = 0; i < wordNum; ++i)
-		{
-			string word = xml4nlp.GetWord(i);
-			string pos = xml4nlp.GetPOS(i);
-			dict item;
-			if (! word.empty())
-			{
-				item["cont"] = word;
-				item["pos"] = pos;
-				r.append(item);
-			}
-		}
+		string result;
+		xml4nlp.SaveDOM(result);
+		xml4nlp.ClearDOM();
 
-		return r;
+		return result;
 	}
 
-	boost::python::list ner(string mMsg){
-		boost::python::list r;
+	string ner(string mMsg){
 		xml4nlp.CreateDOMFromString(mMsg);
 
 		ltp.ner();
-		int wordNum = xml4nlp.CountWordInDocument();
-		for (int i = 0; i < wordNum; ++i)
-		{
-			string word = xml4nlp.GetWord(i);
-			string pos = xml4nlp.GetPOS(i);
-			string ne = xml4nlp.GetNE(i);
-			dict item;
-			if (! word.empty())
-			{
-				item["cont"] = word;
-				item["pos"] = pos;
-				item["ne"] = ne;
-				r.append(item);
-			}
-		}
+		string result;
+		xml4nlp.SaveDOM(result);
+		xml4nlp.ClearDOM();
 
-		return r;
+		return result;
 	}
 
-	boost::python::list srl(string mMsg){
-		boost::python::list r;
+	string dp(string mMsg){
+		xml4nlp.CreateDOMFromString(mMsg);
+
+		ltp.parser();
+		string result;
+		xml4nlp.SaveDOM(result);
+		xml4nlp.ClearDOM();
+
+		return result;
+	}
+
+	string srl(string mMsg){
 		xml4nlp.CreateDOMFromString(mMsg);
 
 		ltp.srl();
-		int wordNum = xml4nlp.CountWordInDocument();
-		for (int i = 0; i < wordNum; ++i)
-		{
-			string word = xml4nlp.GetWord(i);
-			string pos = xml4nlp.GetPOS(i);
-			string ne = xml4nlp.GetNE(i);
+		string result;
+		xml4nlp.SaveDOM(result);
+		xml4nlp.ClearDOM();
 
-			pair<int, const char *> parent_relate;
-			xml4nlp.GetParse(parent_relate,i);
-
-			boost::python::list args;
-			int argNum = xml4nlp.CountPredArgToWord(i);
-			if (argNum > 0)
-			{
-				vector<const char *> vecType(argNum);
-				vector< pair<int, int> > vecBegEnd(argNum);
-				xml4nlp.GetPredArgToWord(i,vecType,vecBegEnd);
-
-				for(int j = 0; j < argNum; ++j){
-					dict arg;
-					arg["type"] = vecType[j];
-					arg["beg"] = (vecBegEnd[j]).first;
-					arg["end"] = (vecBegEnd[j]).second;
-
-					args.append(arg);
-				}
-
-			}
-
-			dict item;
-			if (! word.empty())
-			{
-				item["cont"] = word;
-				item["pos"] = pos;
-				item["ne"] = ne;
-				item["parent"] = parent_relate.first;
-				item["relate"] = parent_relate.second;
-				item["args"] = args;
-				r.append(item);
-			}
-		}
-
-		return r;
+		return result;
 	}
 };
 
 BOOST_PYTHON_MODULE(pyltp)
 {
 	class_<PyLTP>("LTP", init<string>())
+			.def(init<>())
 			.def("ws", &PyLTP::ws)
 			.def("pos", &PyLTP::pos)
 			.def("ner", &PyLTP::ner)
+			.def("dp", &PyLTP::dp)
 			.def("srl", &PyLTP::srl)
 	;
 }
