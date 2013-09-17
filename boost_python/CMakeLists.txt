@@ -1,7 +1,7 @@
 include_directories (${BOOST_INCLUDE_DIR}
     ${PYTHON_INCLUDE_DIR})
 
-set (boost_python_VERSION "3.12")
+set (boost_python_VERSION "1.0")
 
 set (boost_python_SRC
     src/converter/arg_to_python_base.cpp
