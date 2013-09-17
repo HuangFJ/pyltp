@@ -1,7 +1,9 @@
 include_directories (${BOOST_INCLUDE_DIR}
     ${PYTHON_INCLUDE_DIR})
 
-add_library (boost_python
+set (boost_python_VERSION "3.12")
+
+set (boost_python_SRC
     src/converter/arg_to_python_base.cpp
     src/converter/from_python.cpp
     src/converter/type_id.cpp
@@ -30,3 +32,15 @@ add_library (boost_python
     src/module.cpp
     src/object_protocol.cpp
     src/wrapper.cpp)
+
+    
+add_library(boost_python_static_lib STATIC ${boost_python_SRC})
+
+set_target_properties (boost_python_static_lib   PROPERTIES
+    OUTPUT_NAME boost_python)
+
+add_library(boost_python_shared_lib SHARED ${boost_python_SRC})
+
+set_target_properties (boost_python_shared_lib   PROPERTIES
+    VERSION     ${boost_python_VERSION}
+    OUTPUT_NAME boost_python)
