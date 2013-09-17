@@ -24,11 +24,11 @@ set (MODEL_DIR              ${LTP_MODULE_PATH}/ltp_data)
 set (DATA_DIR               ${LTP_MODULE_PATH}/test_data)
 
 # -- config python directories
-set (PYTHON_INCLUDE_DIR     /usr/local/python2.7/include/python2.7)
-set (PYTHON_LIBRARY_PATH    /usr/local/python2.7/lib/libpython2.7.a)
+set (PYTHON_INCLUDE_DIR     /usr/include/python2.7)
+set (PYTHON_LIBRARY_PATH    /usr/lib/libpython2.7.a)
 
 # -- config boost directories
-set (BOOST_INCLUDE_DIR     /usr/local/boost1.53/include)
+set (BOOST_INCLUDE_DIR     /usr/include/boost)
 
 # compiling section
 # -- compile shipped libraries
@@ -36,11 +36,6 @@ add_subdirectory (ltp/thirdparty)
 
 # -- compile source code
 add_subdirectory (ltp/src)
-
-# -- generate configure file for pyltp.so
-configure_file (
-    ${CONFIGURE_DIR}/ltp_all_modules.conf.in
-    ${LIBRARY_OUTPUT_PATH}/ltp_all_modules.conf)
 
 # compile pyltp
 add_subdirectory (src)
