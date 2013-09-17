@@ -3,24 +3,23 @@
 #include "Xml4nlp.h"
 #include "Ltp.h"
 
-
 using namespace boost::python;
-
-
 static XML4NLP xml4nlp;
-static LTP ltp(xml4nlp);
-
+//static LTP ltp(xml4nlp);
 
 struct PyLTP
 {
+private:
+	LTP ltp;
+
 public:
-	PyLTP() {}
+	PyLTP(string config_file): ltp(config_file.c_str(), xml4nlp){}
 
 	boost::python::list ws(string mMsg){
 		boost::python::list r;
 		xml4nlp.CreateDOMFromString(mMsg);
 
-		ltp.crfWordSeg();
+		ltp.wordseg();
 		int wordNum = xml4nlp.CountWordInDocument();
 		for (int i = 0; i < wordNum; ++i)
 		{
@@ -133,7 +132,7 @@ public:
 
 BOOST_PYTHON_MODULE(pyltp)
 {
-	class_<PyLTP>("LTP")
+	class_<PyLTP>("LTP", init<string>())
 			.def("ws", &PyLTP::ws)
 			.def("pos", &PyLTP::pos)
 			.def("ner", &PyLTP::ner)
