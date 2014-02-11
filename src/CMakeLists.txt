@@ -21,16 +21,16 @@ set_target_properties (pyltp PROPERTIES PREFIX "")
 
 target_link_libraries (pyltp
     maxent_static_lib
-	util_static_lib
-	ltp
-	splitsnt
-	segmentor_static_lib
-	postagger_static_lib
-	parser_static_lib
-	ner_static_lib
-	srl_static_lib
-	xml4nlp
-	boost_regex_static_lib
+    util_static_lib
+    ltp
+    splitsnt
+    segmentor_static_lib
+    postagger_static_lib
+    parser_static_lib
+    ner_static_lib
+    srl_static_lib
+    xml4nlp
+    boost_regex_static_lib
     boost_python_static_lib
     dl
     pthread
