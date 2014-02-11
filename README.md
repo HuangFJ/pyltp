@@ -34,7 +34,7 @@ $ ./configure
 $ make
 ```
 
-编译成功之后会在lib目录下生成pyltp.so和ltp_all_modules.conf文件。在ltp_all_modules.conf里面配置<a href="http://ir.hit.edu.cn/ltp/program/ltp_data.zip">ltp_data</a>文件夹的路径。
+编译成功之后会在lib目录下生成pyltp.so。使用时，需要将`{PROJECT_PATH}/lib`加入python的sys.path中。`example/example.py`显示了具体做法。
 
 使用
 ----
@@ -45,11 +45,11 @@ $ python
 ```
 ```
 >>> from pyltp import LTP
->>> ltp = LTP()
->>> ltp.ws(u'元芳你怎么看？'.encode('gbk'))
->>> ltp.pos(u'元芳你怎么看？'.encode('gbk'))
->>> ltp.ner(u'元芳你怎么看？'.encode('gbk'))
->>> ltp.srl(u'元芳你怎么看？'.encode('gbk'))
+>>> ltp = LTP("./ltp.conf")
+>>> ltp.ws(u'元芳你怎么看？'.encode('utf8'))
+>>> ltp.pos(u'元芳你怎么看？'.encode('utf8'))
+>>> ltp.ner(u'元芳你怎么看？'.encode('utf8'))
+>>> ltp.srl(u'元芳你怎么看？'.encode('utf8'))
 ```
 
-应注意获得的结果是gbk编码，所以要在你的代码中还要把gbk再转回utf－8
+应注意获得的结果是xml形式，并以utf8编码。
