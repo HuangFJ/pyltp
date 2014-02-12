@@ -25,7 +25,7 @@ set (DATA_DIR               ${LTP_MODULE_PATH}/test_data)
 
 # -- config python directories
 set (PYTHON_INCLUDE_DIR     /usr/include/python2.7)
-set (PYTHON_LIBRARY_PATH    /usr/lib/libpython2.7.a)
+set (PYTHON_LIBRARY_PATH    /usr/lib/libpython2.7.so)
 
 # -- config boost directories
 set (BOOST_INCLUDE_DIR     /usr/include/boost)
