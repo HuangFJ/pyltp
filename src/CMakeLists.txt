@@ -15,6 +15,8 @@ set_target_properties (pyltp PROPERTIES PREFIX "")
 
 target_link_libraries (pyltp
     segmentor
-    boost_python
+    postagger
+    parser
+    boost_python_shared_lib
     ${PYTHON_LIBRARIES})
 

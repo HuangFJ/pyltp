@@ -24,21 +24,8 @@ set (CONFIGURE_DIR          ${LTP_MODULE_PATH}/conf)
 set (MODEL_DIR              ${LTP_MODULE_PATH}/ltp_data)
 set (DATA_DIR               ${LTP_MODULE_PATH}/test_data)
 
-#execute_process (COMMAND 
-#    python -c "from distutils import sysconfig; print sysconfig.get_config_var('LIBDIR')"
-#    OUTPUT_VARIABLE PYTHON_LIBRARY_DIR)
-
-#execute_process (COMMAND 
-#    python -c "from distutils import sysconfig; print sysconfig.get_config_var('INCLUDEDIR')"
-#    OUTPUT_VARIABLE PYTHON_INCLUDE_DIR)
-
-#message (STATUS ${PYTHON_INCLUDE_DIR})
-#message (STATUS ${PYTHON_LIBRARY_DIR})
-
-# -- config python directories
-
 # -- config boost directories
-set (BOOST_INCLUDE_DIR     /usr/include/boost)
+set (BOOST_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/boost_python/include)
 
 # compiling section
 # -- compile shipped libraries
@@ -48,6 +35,6 @@ set (BOOST_INCLUDE_DIR     /usr/include/boost)
 # add_subdirectory (ltp/src)
 
 # compile pyltp
-# add_subdirectory (boost_python)
+add_subdirectory (boost_python)
 
 add_subdirectory (src)
