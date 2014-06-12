@@ -1,16 +1,23 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
-
-# add project root lib into sys.path
+# -*- coding: utf-8 -*-
 import sys, os
 ROOTDIR = os.path.join(os.path.dirname(__file__), os.pardir)
 sys.path.append(os.path.join(ROOTDIR, "lib"))
 
-from pyltp import LTP
+from pyltp import Segmentor, Postagger, Parser
+segmentor = Segmentor()
+segmentor.load("/home/yjliu/ltp/model/cws.model")
+words = segmentor.segment("元芳你怎么看")
+print "|".join(words)
 
-ltp = LTP("./ltp.cnf")
+postagger = Postagger()
+postagger.load("/home/yjliu/ltp/model/pos.model")
+postags = postagger.postag(words)
+print "|".join(postags)
 
-print ltp.ws(u'元芳你怎么看？'.encode('utf8'))
-print ltp.pos(u'元芳你怎么看？'.encode('utf8'))
-print ltp.ner(u'元芳你怎么看？'.encode('utf8'))
-print ltp.srl(u'元芳你怎么看？'.encode('utf8'))
+parser = Parser()
+parser.load("/home/yjliu/ltp/model/parser.model")
+arcs = parser.parse(words, postags)
+
+for arc in arcs:
+    print arc.head, arc.relation
