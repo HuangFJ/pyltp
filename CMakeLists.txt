@@ -6,7 +6,8 @@ if (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 endif (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 
 # project attributes section
-set (LTP_MODULE_PATH        ${PROJECT_SOURCE_DIR}/ltp)
+#set (LTP_MODULE_PATH        ${PROJECT_SOURCE_DIR}/ltp)
+set (LTP_HOME  ${PROJECT_SOURCE_DIR}/ltp)
 
 # -- config cmake modules path
 set (CMAKE_MODULE_PATH      ${LTP_MODULE_PATH}/cmake)
@@ -23,20 +24,30 @@ set (CONFIGURE_DIR          ${LTP_MODULE_PATH}/conf)
 set (MODEL_DIR              ${LTP_MODULE_PATH}/ltp_data)
 set (DATA_DIR               ${LTP_MODULE_PATH}/test_data)
 
+#execute_process (COMMAND 
+#    python -c "from distutils import sysconfig; print sysconfig.get_config_var('LIBDIR')"
+#    OUTPUT_VARIABLE PYTHON_LIBRARY_DIR)
+
+#execute_process (COMMAND 
+#    python -c "from distutils import sysconfig; print sysconfig.get_config_var('INCLUDEDIR')"
+#    OUTPUT_VARIABLE PYTHON_INCLUDE_DIR)
+
+#message (STATUS ${PYTHON_INCLUDE_DIR})
+#message (STATUS ${PYTHON_LIBRARY_DIR})
+
 # -- config python directories
-set (PYTHON_INCLUDE_DIR     /usr/include/python2.7)
-set (PYTHON_LIBRARY_PATH    /usr/lib/libpython2.7.so)
 
 # -- config boost directories
 set (BOOST_INCLUDE_DIR     /usr/include/boost)
 
 # compiling section
 # -- compile shipped libraries
-add_subdirectory (ltp/thirdparty)
+# add_subdirectory (ltp/thirdparty)
 
 # -- compile source code
-add_subdirectory (ltp/src)
+# add_subdirectory (ltp/src)
 
 # compile pyltp
+# add_subdirectory (boost_python)
+
 add_subdirectory (src)
-add_subdirectory (boost_python)
