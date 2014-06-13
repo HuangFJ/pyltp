@@ -1,5 +1,5 @@
-pyltp<sup>beta</sup>: the python extension for LTP
-----
+ld Status](https://travis-ci.org/Oneplus/pyltp.svg?branch=master)](https://travis-ci.org/Oneplus/pyltp)
+
 pyltp是[语言技术平台(Language Technology Platform, LTP)](https://github.com/HIT-SCIR/ltp)的Python封装。 关于LTP更多的信息，欢迎访问LTP项目主页。
 
 ### 作者
@@ -23,16 +23,40 @@ pyltp是[语言技术平台(Language Technology Platform, LTP)](https://github.c
 
 # 安装
 
+## 安装CMake
+
+pyltp依赖于CMake，请首先安装CMake。不同平台的安装方法请参考[安装CMake](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%AE%89%E8%A3%85cmake)
+
 ## Unix编译
 
-首先安装CMake
+在编译pyltp之前，请首先编译LTP。具体编译方法请参考[如何安装ltp](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85ltp)。
+
+如果您使用github的开发版的pyltp，您可可以采用
+
+```
+git submodule init
+git submodule update
+cd ltp
+./configure
+make
+cd ..
+```
+
+编译LTP。
+
+编译LTP以后，请使用如下命令编译pyltp
 
 ```
 ./cmake -DLTP_HOME=/path/to/your/ltp/project .
 make
 ```
 
+其中，请将`/path/to/your/ltp/project`替换为您的LTP项目地址。
+如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为<code>``pwd``/ltp</code>。
+
 ## MSVC编译
+
+尚处于测试阶段
 
 # 例子
 
@@ -44,3 +68,7 @@ segmentor.load("/path/to/your/cws/model")
 words = segmentor.segment("元芳你怎么看")
 print "|".join(words)
 ```
+
+# 文档
+
+待完善

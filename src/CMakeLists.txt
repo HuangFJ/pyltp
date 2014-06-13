@@ -17,6 +17,7 @@ target_link_libraries (pyltp
     segmentor
     postagger
     parser
+    ner
     boost_python_shared_lib
     ${PYTHON_LIBRARIES})
 

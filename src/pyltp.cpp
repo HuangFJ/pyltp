@@ -137,6 +137,45 @@ struct Parser {
 };
 
 
+struct NER {
+  NER()
+    : model(NULL) {}
+
+  void load(std::string model_path) {
+    if (model == NULL) {
+      model = ner_create_recognizer(model_path.c_str());
+    } else {
+      std::cerr << "NER: Model reloaded!" << std::endl;
+    }
+  }
+
+  std::vector<std::string> recognize(std::vector<std::string> words,
+      std::vector<std::string> postags) {
+    std::vector<std::string> netags;
+    if (model == NULL) {
+      std::cerr << "NER: Model not loaded!" << std::endl;
+    } else {
+      ner_recognize(model, words, postags, netags);
+    }
+    return netags;
+  }
+
+  void release() {
+    if (model != NULL) {
+      ner_release_recognizer(model);
+      model = NULL;
+    }
+  }
+
+  void * model;
+};
+
+
+struct SRL {
+  
+};
+
+
 BOOST_PYTHON_MODULE(pyltp)
 {
   using namespace boost::python;
@@ -169,4 +208,11 @@ BOOST_PYTHON_MODULE(pyltp)
     .def("parse", &Parser::parse)
     .def("release", &Parser::release)
     ;
+
+  class_<NER>("NER")
+    .def("load", &NER::load)
+    .def("recognize", &NER::recognize)
+    .def("release", &NER::release)
+    ;
+
 }
