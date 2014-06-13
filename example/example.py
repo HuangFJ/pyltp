@@ -4,32 +4,39 @@ import sys, os
 ROOTDIR = os.path.join(os.path.dirname(__file__), os.pardir)
 sys.path.append(os.path.join(ROOTDIR, "lib"))
 
+# Set your own model path
+MODELDIR=os.path.join(ROOTDIR, "ltp_data")
+
 from pyltp import Segmentor, Postagger, Parser, NamedEntityRecognizer, SementicRoleLabeller
 
+sentence = "中国进出口银行与中国银行加强合作"
+
 segmentor = Segmentor()
-segmentor.load("/home/yjliu/ltp/model/cws.model")
-words = segmentor.segment("元芳你怎么看")
-print "|".join(words)
+segmentor.load(os.path.join(MODELDIR, "cws.model"))
+words = segmentor.segment(sentence)
+print "\t".join(words)
 
 postagger = Postagger()
-postagger.load("/home/yjliu/ltp/model/pos.model")
+postagger.load(os.path.join(MODELDIR, "pos.model"))
 postags = postagger.postag(words)
-print "|".join(postags)
+print "\t".join(postags)
 
 parser = Parser()
-parser.load("/home/yjliu/ltp/model/parser.model")
+parser.load(os.path.join(MODELDIR, "parser.model"))
 arcs = parser.parse(words, postags)
 
-for arc in arcs:
-    print arc.head, arc.relation
+print "\t".join("%d:%s" % (arc.head, arc.relation) for arc in arcs)
 
 recognizer = NamedEntityRecognizer()
-recognizer.load("/home/yjliu/ltp/model/ner.model")
+recognizer.load(os.path.join(MODELDIR, "ner.model"))
 netags = recognizer.recognize(words, postags)
-print "|".join(netags)
+print "\t".join(netags)
 
 labeller = SementicRoleLabeller()
-labeller.load("/home/yjliu/ltp/model/SRL/")
+labeller.load(os.path.join(MODELDIR, "srl/"))
+#labeller.load("/home/yjliu/ltp/model/srl/")
 roles = labeller.label(words, postags, netags, arcs)
+
 for role in roles:
-    print role
+    print role.index, "".join(
+            ["%s:(%d,%d)" % (arg.name, arg.range.start, arg.range.end) for arg in role.arguments])

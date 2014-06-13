@@ -179,7 +179,7 @@ struct SementicRoleLabeller {
     : loaded(false) {}
 
   void load(std::string model_path) {
-    loaded = SRL_LoadResource(model_path);
+    loaded = (SRL_LoadResource(model_path) == 0);
   }
 
   std::vector<SementicRole> label(
@@ -189,6 +189,11 @@ struct SementicRoleLabeller {
       std::vector<ParseResult> parse
       ) {
     std::vector<SementicRole> ret;
+
+    // Some trick
+    for (int i = 0; i < parse.size(); ++ i) {
+      parse[i].first --;
+    }
     if (!loaded) {
       std::cerr << "SRL: Model not loaded!" << std::endl;
     } else {
