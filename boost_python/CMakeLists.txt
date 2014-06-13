@@ -1,5 +1,7 @@
+find_package(PythonLibs REQUIRED)
+
 include_directories (${BOOST_INCLUDE_DIR}
-    ${PYTHON_INCLUDE_DIR})
+    ${PYTHON_INCLUDE_DIRS})
 
 set (boost_python_VERSION "1.0")
 
@@ -33,8 +35,7 @@ set (boost_python_SRC
     src/object_protocol.cpp
     src/wrapper.cpp)
 
-    
-add_library(boost_python_static_lib STATIC ${boost_python_SRC})
+add_library (boost_python_static_lib STATIC ${boost_python_SRC})
 
 set_target_properties (boost_python_static_lib   PROPERTIES
     OUTPUT_NAME boost_python)
