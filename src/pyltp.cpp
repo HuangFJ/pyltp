@@ -137,8 +137,8 @@ struct Parser {
 };
 
 
-struct NER {
-  NER()
+struct NamedEntityRecognizer {
+  NamedEntityRecognizer()
     : model(NULL) {}
 
   void load(std::string model_path) {
@@ -170,9 +170,40 @@ struct NER {
   void * model;
 };
 
+typedef std::pair<int, int>                 ArgRange;
+typedef std::pair<std::string, ArgRange>    Arg;
+typedef std::pair<int, std::vector<Arg> >   SementicRole;
 
-struct SRL {
-  
+struct SementicRoleLabeller {
+  SementicRoleLabeller()
+    : loaded(false) {}
+
+  void load(std::string model_path) {
+    loaded = SRL_LoadResource(model_path);
+  }
+
+  std::vector<SementicRole> label(
+      std::vector<std::string> words,
+      std::vector<std::string> postags,
+      std::vector<std::string> netags,
+      std::vector<ParseResult> parse
+      ) {
+    std::vector<SementicRole> ret;
+    if (!loaded) {
+      std::cerr << "SRL: Model not loaded!" << std::endl;
+    } else {
+      DoSRL(words, postags, netags, parse, ret);
+    }
+    return ret;
+  }
+
+  void release() {
+    if (loaded) {
+      SRL_ReleaseResource();
+    }
+  }
+
+  bool loaded;
 };
 
 
@@ -180,9 +211,27 @@ BOOST_PYTHON_MODULE(pyltp)
 {
   using namespace boost::python;
 
-  class_<ParseResult >("ParseResult")
+  class_<ParseResult>("ParseResult")
     .def_readwrite("head",     &ParseResult::first)
     .def_readwrite("relation", &ParseResult::second);
+
+  class_<ArgRange>("ArgRange")
+    .def_readwrite("start",    &ArgRange::first)
+    .def_readwrite("end",      &ArgRange::second);
+
+  class_<Arg>("Arg")
+    .def_readwrite("name",     &Arg::first)
+    .def_readwrite("range",    &Arg::second);
+
+  class_<std::vector<Arg> >("Args")
+    .def(vector_indexing_suite<std::vector<Arg> >() );
+
+  class_<SementicRole >("SementicRole")
+    .def_readwrite("index",     &SementicRole::first)
+    .def_readwrite("arguments", &SementicRole::second);
+
+  class_<std::vector<SementicRole> >("SementicRoles")
+    .def(vector_indexing_suite<std::vector<SementicRole> >() );
 
   class_<std::vector<std::string> >("VectorOfString")
     .def(vector_indexing_suite<std::vector<std::string> >() );
@@ -209,10 +258,15 @@ BOOST_PYTHON_MODULE(pyltp)
     .def("release", &Parser::release)
     ;
 
-  class_<NER>("NER")
-    .def("load", &NER::load)
-    .def("recognize", &NER::recognize)
-    .def("release", &NER::release)
+  class_<NamedEntityRecognizer>("NamedEntityRecognizer")
+    .def("load", &NamedEntityRecognizer::load)
+    .def("recognize", &NamedEntityRecognizer::recognize)
+    .def("release", &NamedEntityRecognizer::release)
     ;
 
+  class_<SementicRoleLabeller>("SementicRoleLabeller")
+    .def("load", &SementicRoleLabeller::load)
+    .def("label", &SementicRoleLabeller::label)
+    .def("release", &SementicRoleLabeller::release)
+    ;
 }
