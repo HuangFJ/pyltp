@@ -1,6 +1,6 @@
 pyltp<sup>beta</sup>: the python extension for LTP
 ----
-[![Build Status](https://travis-ci.org/Oneplus/pyltp.svg?branch=master)](https://travis-ci.org/Oneplus/pyltp)
+[![Build Status](https://travis-ci.org/HIT-SCIR/pyltp.svg?branch=master)](https://travis-ci.org/HIT-SCIR/pyltp)
 
 pyltp是[语言技术平台(Language Technology Platform, LTP)](https://github.com/HIT-SCIR/ltp)的Python封装。 关于LTP更多的信息，欢迎访问LTP项目主页。
 
