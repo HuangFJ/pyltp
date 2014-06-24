@@ -31,34 +31,79 @@ pyltp依赖于CMake，请首先安装CMake。不同平台的安装方法请参�
 
 ## Unix编译
 
+### Python开发版
+
+在unix环境下编译时，请确保对应的python是dev版。您可以使用
+
+* Ubuntu/Debian
+```
+$ [sudo] apt-get install python-dev
+```
+* Fedora
+```
+$ [sudo] yum install python-devel
+```
+安装dev版的python。
+
+### 安装LTP
+
 在编译pyltp之前，请首先编译LTP。具体编译方法请参考[如何安装ltp](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85ltp)。
 
 如果您使用github的开发版的pyltp，您可可以采用
 
 ```
-git submodule init
-git submodule update
-cd ltp
-./configure
-make
-cd ..
+$ git submodule init
+$ git submodule update
+$ cd ltp
+$ ./configure
+$ make
+$ cd ..
 ```
 
 编译LTP。
 
+### 编译pyltp
+
 编译LTP以后，请使用如下命令编译pyltp
 
 ```
-./cmake -DLTP_HOME=/path/to/your/ltp/project .
-make
+$ ./cmake -DLTP_HOME=/path/to/your/ltp/project .
+$ make
 ```
 
 其中，请将`/path/to/your/ltp/project`替换为您的LTP项目地址。
 如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为<code>``pwd``/ltp</code>。
 
+### Python3
+
+pyltp主要采用python2.7开发。但经测试，其python3下也可以使用。
+需要注意一点，请保证`python-config`与`python`命令指向相同的版本。
+
+具体的检查方法可以用`python-config --includes`和`python --version`命令。
+
+* python2.7环境下
+
+```
+$ python --version
+Python 2.7.5+
+$ python-config --includes
+-I/usr/include/python2.7 ..
+```
+
+* python3环境下
+```
+$ python --version
+Python 3.3.2+
+$ python-config --includes
+-I/usr/include/python3.3m ..
+```
+
+请确保编译环境与运行环境使用相同python版本。
+
 ## MSVC编译
 
 尚处于测试阶段
+
 
 # 例子
 
