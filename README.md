@@ -15,7 +15,7 @@ pyltp是[语言技术平台(Language Technology Platform, LTP)](https://github.c
 本项目旨在使Python用户可以本地调用LTP。
 该项目还处于测试状态，欢迎反馈bug。
 
-在使用ltp4j之前，您需要简要了解
+在使用pyltp之前，您需要简要了解
 * [什么是语言技术平台](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E7%AE%80%E4%BB%8B)，它能否帮助您解决问题
 * [如何安装语言技术平台](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85ltp)
 * [语言技术平台提供哪些编程接口](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3)
