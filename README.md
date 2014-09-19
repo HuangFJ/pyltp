@@ -1,7 +1,7 @@
 pyltp
 ----
 
-<a href="https://github.com/HIT-SCIR/ltp">LTP</a> 的 Python 封装。
+<a href="https://github.com/HIT-SCIR/ltp">LTP</a> 的 Python 封装。此项目已经转由LTP官方维护：https://github.com/HIT-SCIR/pyltp
 
 依赖
 ----
