@@ -72,7 +72,7 @@ $ make
 ```
 
 其中，请将`/path/to/your/ltp/project`替换为您的LTP项目地址。
-如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为`pwd/ltp`。
+如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为`` `pwd`/ltp``。
 
 ### Python3
 
