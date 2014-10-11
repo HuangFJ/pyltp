@@ -67,12 +67,12 @@ $ cd ..
 编译LTP以后，请使用如下命令编译pyltp
 
 ```
-$ ./cmake -DLTP_HOME=/path/to/your/ltp/project .
+$ cmake -DLTP_HOME=/path/to/your/ltp/project .
 $ make
 ```
 
 其中，请将`/path/to/your/ltp/project`替换为您的LTP项目地址。
-如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为<code>``pwd``/ltp</code>。
+如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为`pwd/ltp`。
 
 ### Python3
 
