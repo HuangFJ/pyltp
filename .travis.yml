@@ -6,9 +6,9 @@ os:
     - osx
 
 install:
-    python setup.py build
-    mkdir -p lib/
-    cp build/lib.*/pyltp.so lib
+    - python setup.py build
+    - mkdir -p lib/
+    - cp build/lib.*/pyltp.so lib
 
 script:
     - python example/example.py
