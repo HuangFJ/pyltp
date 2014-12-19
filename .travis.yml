@@ -5,18 +5,10 @@ os:
     - linux
     - osx
 
-before_install:
-    - sudo apt-get install cmake
-    - git submodule update
-    - cd ltp
-    - ./configure
-    - make
-    - cd ..
-
 install:
-    - cmake -DLTP_HOME=`pwd`/ltp/ .
-    - make
-    - export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`/ltp/lib
+    python setup.py build
+    mkdir -p lib/
+    cp build/lib.*/pyltp.so lib
 
 script:
     - python example/example.py

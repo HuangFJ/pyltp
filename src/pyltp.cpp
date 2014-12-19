@@ -120,7 +120,7 @@ struct Parser {
       parser_parse(model, words, postags, heads, relations);
     }
 
-    for (int i = 0; i < heads.size(); ++ i) {
+    for (std::size_t i = 0; i < heads.size(); ++ i) {
       ret.push_back(ParseResult(heads[i], relations[i]));
     }
     return ret;
@@ -191,7 +191,7 @@ struct SementicRoleLabeller {
     std::vector<SementicRole> ret;
 
     // Some trick
-    for (int i = 0; i < parse.size(); ++ i) {
+    for (std::size_t i = 0; i < parse.size(); ++ i) {
       parse[i].first --;
     }
     if (!loaded) {
