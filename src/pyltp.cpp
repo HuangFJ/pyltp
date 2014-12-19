@@ -13,11 +13,11 @@
 #include <vector>
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-#include "ltp/segment_dll.h"
-#include "ltp/postag_dll.h"
-#include "ltp/parser_dll.h"
-#include "ltp/ner_dll.h"
-#include "ltp/SRL_DLL.h"
+#include "segment_dll.h"
+#include "postag_dll.h"
+#include "parser_dll.h"
+#include "ner_dll.h"
+#include "SRL_DLL.h"
 
 
 struct Segmentor {
