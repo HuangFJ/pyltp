@@ -25,11 +25,16 @@ pyltp是[语言技术平台(Language Technology Platform, LTP)](https://github.c
 
 # 安装
 
-## 安装CMake
-
-pyltp依赖于CMake，请首先安装CMake。不同平台的安装方法请参考[安装CMake](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%AE%89%E8%A3%85cmake)
-
 ## Unix编译
+
+建议您使用github的开发版的pyltp，您可以采用如下命令编译pyltp
+
+```
+$ git clone https://github.com/HIT-SCIR/pyltp
+$ git submodule init
+$ git submodule update
+$ python setup.py build
+```
 
 ### Python开发版
 
@@ -44,35 +49,6 @@ $ [sudo] apt-get install python-dev
 $ [sudo] yum install python-devel
 ```
 安装dev版的python。
-
-### 安装LTP
-
-在编译pyltp之前，请首先编译LTP。具体编译方法请参考[如何安装ltp](https://github.com/HIT-SCIR/ltp/blob/master/doc/ltp-document-3.0.md#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85ltp)。
-
-如果您使用github的开发版的pyltp，您可可以采用
-
-```
-$ git submodule init
-$ git submodule update
-$ cd ltp
-$ ./configure
-$ make
-$ cd ..
-```
-
-编译LTP。
-
-### 编译pyltp
-
-编译LTP以后，请使用如下命令编译pyltp
-
-```
-$ cmake -DLTP_HOME=/path/to/your/ltp/project .
-$ make
-```
-
-其中，请将`/path/to/your/ltp/project`替换为您的LTP项目地址。
-如果您是使用开发版的pyltp，可以将`/path/to/your/ltp/project`替换为`` `pwd`/ltp``。
 
 ### Python3
 
