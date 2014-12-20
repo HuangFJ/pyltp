@@ -1,0 +1,14 @@
+include README.rst
+include CHANGES.rst
+
+recursive-include ltp/src/framework *.h *.hpp
+recursive-include ltp/src/utils     *.h *.hpp *.tab
+recursive-include ltp/src/segmentor *.h *.hpp
+recursive-include ltp/src/postagger *.h *.hpp
+recursive-include ltp/src/ner       *.h *.hpp
+recursive-include ltp/src/parser    *.h *.hpp
+recursive-include ltp/src/srl       *.h *.hpp *.hh
+recursive-include ltp/src/__util    *.h
+recursive-include ltp/thirdparty/boost *.hpp *.cpp
+recursive-include ltp/thirdparty/maxent *.h
+recursive-include boost_python/include/boost 

@@ -27,11 +27,6 @@ sources += glob.glob('boost_python/src/converter/*.cpp')
 
 sources = [source for source in sources if source not in excluded_sources]
 
-#import pprint
-#pprint.pprint(sources)
-#import sys
-#sys.exit(1)
-
 includes = [
         'ltp/include/',
         'ltp/thirdparty/boost/include/',
@@ -56,9 +51,9 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.1.0',
+    version='0.1.1',
     description='pyltp: the python extension for LTP',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     author='Yijia Liu',
     author_email='ltp-cloud@googlegroups.com',
     url='https://github.com/HIT-SCIR/pyltp',
