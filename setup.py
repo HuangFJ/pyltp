@@ -15,15 +15,16 @@ excluded_sources = (
 sources = ['src/pyltp.cpp']
 sources += glob.glob('ltp/thirdparty/boost/libs/regex/src/*.cpp')
 sources += glob.glob('ltp/thirdparty/maxent/*.cpp')
-sources += glob.glob('ltp/src/segmentor/*.cpp') 
+sources += glob.glob('ltp/src/segmentor/*.cpp')
 sources += glob.glob('ltp/src/postagger/*.cpp')
 sources += glob.glob('ltp/src/ner/*.cpp')
 sources += glob.glob('ltp/src/parser/*.cpp')
 sources += glob.glob('ltp/src/srl/*.cpp')
 sources += glob.glob('ltp/src/__util/MyLib.cpp')
-sources += glob.glob('boost_python/src/*.cpp')
-sources += glob.glob('boost_python/src/object/*.cpp')
-sources += glob.glob('boost_python/src/converter/*.cpp')
+#sources += glob.glob('patch/libs/python/class.cpp')
+sources += glob.glob('patch/libs/python/src/*.cpp')
+sources += glob.glob('patch/libs/python/src/object/*.cpp')
+sources += glob.glob('patch/libs/python/src/converter/*.cpp')
 
 sources = [source for source in sources if source not in excluded_sources]
 
@@ -40,7 +41,7 @@ includes = [
         'ltp/src/utils/',
         'ltp/src/__util/',
         'ltp/src/srl/',
-        'boost_python/include/'
+        'patch/include/'
         ]
 
 ext_modules = [Extension('pyltp',
