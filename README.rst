@@ -2,7 +2,7 @@
 pyltp: the python extension for LTP
 ===================================
 
-|Build Status|
+|Pypi Status| |Build Status|
 
 pyltp是\ `语言技术平台(Language Technology Platform,LTP) <https://github.com/HIT-SCIR/ltp>`__\ 的Python封装。
 关于LTP更多的信息，欢迎访问LTP项目主页。
@@ -62,6 +62,9 @@ pypi安装
 
 -  刘一佳 << yjliu@ir.hit.edu.cn >> 2014-06-12 重组项目
 -  HuangFJ << biohfj@gmail.com >> 本项目最初作者
+
+.. |Pypi Status| image:: https://pypip.in/v/pyltp/badge.png
+   :target: https://pypi.python.org/pypi/pyltp
 
 .. |Build Status| image:: https://travis-ci.org/HIT-SCIR/pyltp.svg?branch=master
    :target: https://travis-ci.org/HIT-SCIR/pyltp
