@@ -11,4 +11,4 @@ recursive-include ltp/src/srl       *.h *.hpp *.hh
 recursive-include ltp/src/__util    *.h
 recursive-include ltp/thirdparty/boost *.hpp *.cpp
 recursive-include ltp/thirdparty/maxent *.h
-recursive-include boost_python/include/boost 
+recursive-include patch/include/boost 

@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import glob
-from setuptools import setup, Extension
-
 import os
+from setuptools import setup, Extension
 
 project_root=os.path.dirname(os.path.realpath(__file__))
 
@@ -39,11 +38,6 @@ sources += glob.glob(os.path.join(patch_libs, "converter", "*.cpp"))
 
 sources = [source for source in sources if source not in excluded_sources]
 
-#import sys
-#import pprint
-#pprint.pprint(sources)
-#sys.exit(1)
-
 includes = [
         'ltp/include/',
         'ltp/thirdparty/boost/include/',
@@ -61,9 +55,7 @@ includes = [
         ]
 
 if os.name == 'nt':
-    extra_compile_args=['/O2', '/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
-else:
-    extra_compile_args=['-O3']
+    extra_compile_args=['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
@@ -74,7 +66,7 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.1.1',
+    version='0.1.2',
     description='pyltp: the python extension for LTP',
     long_description=open('README.rst').read(),
     author='Yijia Liu',
@@ -84,10 +76,16 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
-        'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Scientific/Engineering :: Information Analysis",
+        "Topic :: Text Processing :: Linguistic",
     ],
     zip_safe=False,
     #packages=['pyltp'],
