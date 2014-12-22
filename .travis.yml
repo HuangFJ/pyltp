@@ -10,7 +10,7 @@ install:
     - python setup.py build
     - python setup.py sdist
     - cd dist/
-    - tar zxvf pyltp-$PYLTPVER.tar.gz
+    - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
     - cd pyltp-$PYLTPVER
     - python setup.py build
     - cd ..
