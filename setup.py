@@ -3,11 +3,11 @@ import glob
 import os
 from setuptools import setup, Extension
 
-project_root=os.path.dirname(os.path.realpath(__file__))
-
-ltp_root=os.path.join(project_root, "ltp")
+ltp_root="ltp"
 ltp_source=os.path.join(ltp_root, "src")
 ltp_thirdparty=os.path.join(ltp_root, "thirdparty")
+patch_root="patch"
+patch_libs=os.path.join(patch_root, "libs", "python", "src")
 
 excluded_sources = (
         os.path.join(ltp_source, "segmentor", "otcws.cpp"),
@@ -20,10 +20,7 @@ excluded_sources = (
         os.path.join(ltp_thirdparty, "maxent", "predict.cpp")
         )
 
-patch_root=os.path.join(project_root, "patch")
-patch_libs=os.path.join(patch_root, "libs", "python", "src")
-
-sources = [os.path.join(project_root, "src", "pyltp.cpp")]
+sources = [os.path.join("src", "pyltp.cpp")]
 sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "regex", "src", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_thirdparty, "maxent", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))

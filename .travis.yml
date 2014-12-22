@@ -12,7 +12,7 @@ install:
     - cd dist/
     - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
     - cd pyltp-$PYLTPVER
-    - python setup.py build
+    - python setup.py build > /dev/null
     - cd ..
 
 script:
