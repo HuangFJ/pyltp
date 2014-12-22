@@ -13,7 +13,7 @@ install:
     - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
     - cd pyltp-$PYLTPVER
     - python setup.py build >& /dev/null
-    - cd ..
+    - cd ../../
     - mkdir -p lib/
     - cp build/lib.*/pyltp.so lib
 
