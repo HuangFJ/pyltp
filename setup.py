@@ -54,8 +54,10 @@ includes = [
         'patch/include/'
         ]
 
+extra_compile_args = []
+
 if os.name == 'nt':
-    extra_compile_args=['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
+    extra_compile_args +=['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
