@@ -1,7 +1,7 @@
 include README.rst
 include CHANGES.rst
 
-recursive-include src/pyltp.cpp
+recursive-include src *.cpp
 recursive-include ltp/src/framework *.h *.hpp
 recursive-include ltp/src/utils     *.h *.hpp *.tab
 recursive-include ltp/src/segmentor *.cpp *.h *.hpp
@@ -12,4 +12,4 @@ recursive-include ltp/src/srl       *.cpp *.h *.hpp *.hh
 recursive-include ltp/src/__util    *.h
 recursive-include ltp/thirdparty/boost *.hpp *.cpp
 recursive-include ltp/thirdparty/maxent *.cpp *.h
-recursive-include patch/include/boost
+recursive-include patch *.hpp *.cpp
