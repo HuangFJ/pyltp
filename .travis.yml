@@ -6,7 +6,14 @@ os:
     - osx
 
 install:
+    - export PYLTPVER=$(python setup.py --version)
     - python setup.py build
+    - python setup.py sdist
+    - cd dist/
+    - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
+    - cd pyltp-$PYLTPVER
+    - python setup.py build >& /dev/null
+    - cd ../../
     - mkdir -p lib/
     - cp build/lib.*/pyltp.so lib
 
