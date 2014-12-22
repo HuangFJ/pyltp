@@ -11,5 +11,5 @@ recursive-include ltp/src/parser    *.cpp *.h *.hpp
 recursive-include ltp/src/srl       *.cpp *.h *.hpp *.hh
 recursive-include ltp/src/__util    *.h
 recursive-include ltp/thirdparty/boost *.hpp *.cpp
-recursive-include ltp/thirdparty/maxent *.h
+recursive-include ltp/thirdparty/maxent *.cpp *.h
 recursive-include patch/include/boost
