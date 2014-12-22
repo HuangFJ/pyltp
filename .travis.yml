@@ -12,10 +12,10 @@ install:
     - cd dist/
     - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
     - cd pyltp-$PYLTPVER
-    - python setup.py build > /dev/null
+    - python setup.py build >& /dev/null
     - cd ..
-
-script:
     - mkdir -p lib/
     - cp build/lib.*/pyltp.so lib
+
+script:
     - python example/example.py
