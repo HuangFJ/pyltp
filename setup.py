@@ -2,31 +2,47 @@
 import glob
 from setuptools import setup, Extension
 
-excluded_sources = (
-        'ltp/src/segmentor/otcws.cpp',
-        'ltp/src/segmentor/otcws_customized.cpp',
-        'ltp/src/postagger/otpos.cpp',
-        'ltp/src/ner/otner.cpp',
-        'ltp/src/parser/lgdpj.cpp',
-        'ltp/src/srl/lgsrl.cpp',
-        'ltp/thirdparty/maxent/train.cpp',
-        'ltp/thirdparty/maxent/predict.cpp')
+import os
 
-sources = ['src/pyltp.cpp']
-sources += glob.glob('ltp/thirdparty/boost/libs/regex/src/*.cpp')
-sources += glob.glob('ltp/thirdparty/maxent/*.cpp')
-sources += glob.glob('ltp/src/segmentor/*.cpp')
-sources += glob.glob('ltp/src/postagger/*.cpp')
-sources += glob.glob('ltp/src/ner/*.cpp')
-sources += glob.glob('ltp/src/parser/*.cpp')
-sources += glob.glob('ltp/src/srl/*.cpp')
-sources += glob.glob('ltp/src/__util/MyLib.cpp')
-#sources += glob.glob('patch/libs/python/class.cpp')
-sources += glob.glob('patch/libs/python/src/*.cpp')
-sources += glob.glob('patch/libs/python/src/object/*.cpp')
-sources += glob.glob('patch/libs/python/src/converter/*.cpp')
+project_root=os.path.dirname(os.path.realpath(__file__))
+
+ltp_root=os.path.join(project_root, "ltp")
+ltp_source=os.path.join(ltp_root, "src")
+ltp_thirdparty=os.path.join(ltp_root, "thirdparty")
+
+excluded_sources = (
+        os.path.join(ltp_source, "segmentor", "otcws.cpp"),
+        os.path.join(ltp_source, "segmentor", "otcws_customized.cpp"),
+        os.path.join(ltp_source, "postagger", "otpos.cpp"),
+        os.path.join(ltp_source, "ner", "otner.cpp"),
+        os.path.join(ltp_source, "parser", "lgdpj.cpp"),
+        os.path.join(ltp_source, "srl", "lgsrl.cpp"),
+        os.path.join(ltp_thirdparty, "maxent", "train.cpp"),
+        os.path.join(ltp_thirdparty, "maxent", "predict.cpp")
+        )
+
+patch_root=os.path.join(project_root, "patch")
+patch_libs=os.path.join(patch_root, "libs", "python", "src")
+
+sources = [os.path.join(project_root, "src", "pyltp.cpp")]
+sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "regex", "src", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_thirdparty, "maxent", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "postagger", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "ner", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "parser", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "srl", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "__util", "MyLib.cpp"))
+sources += glob.glob(os.path.join(patch_libs, "*.cpp"))
+sources += glob.glob(os.path.join(patch_libs, "object", "*.cpp"))
+sources += glob.glob(os.path.join(patch_libs, "converter", "*.cpp"))
 
 sources = [source for source in sources if source not in excluded_sources]
+
+#import sys
+#import pprint
+#pprint.pprint(sources)
+#sys.exit(1)
 
 includes = [
         'ltp/include/',
@@ -44,10 +60,16 @@ includes = [
         'patch/include/'
         ]
 
+if os.name == 'nt':
+    extra_compile_args=['/O2', '/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
+else:
+    extra_compile_args=['-O3']
+
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
     language='c++',
-    sources=sources
+    sources=sources,
+    extra_compile_args=extra_compile_args
     )]
 
 setup(
