@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import glob
 import os
+import sys
 from setuptools import setup, Extension
 
 ltp_root="ltp"
@@ -53,8 +54,10 @@ includes = [
 
 extra_compile_args = []
 
-if os.name == 'nt':
-    extra_compile_args +=['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
+if sys.platform == 'win32':
+    extra_compile_args += ['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
+elif sys.platform == 'darwin':
+    extra_compile_args += ['-std=c++11', '-stdlib=libstdc++']
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
