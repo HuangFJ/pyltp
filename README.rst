@@ -60,6 +60,7 @@ pypi安装
 作者
 ====
 
+-  徐梓翔 << zxxu@ir.hit.edu.cn >> 2015-01-20 解决跨平台运行问题
 -  刘一佳 << yjliu@ir.hit.edu.cn >> 2014-06-12 重组项目
 -  HuangFJ << biohfj@gmail.com >> 本项目最初作者
 
