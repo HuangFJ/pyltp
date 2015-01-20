@@ -2,6 +2,7 @@
 import glob
 import os
 import sys
+import codecs
 from setuptools import setup, Extension
 
 ltp_root="ltp"
@@ -70,7 +71,7 @@ setup(
     name='pyltp',
     version='0.1.4',
     description='pyltp: the python extension for LTP',
-    long_description=open('README.rst').read(),
+    long_description=codecs.open('README.rst', encoding='utf-8').read(),
     author='Yijia Liu',
     author_email='ltp-cloud@googlegroups.com',
     url='https://github.com/HIT-SCIR/pyltp',
