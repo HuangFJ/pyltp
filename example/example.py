@@ -19,6 +19,8 @@ print "\t".join(words)
 postagger = Postagger()
 postagger.load(os.path.join(MODELDIR, "pos.model"))
 postags = postagger.postag(words)
+# list-of-string parameter is support in 0.1.5
+#postags = postagger.postag(["中国","进出口","银行","与","中国银行","加强","合作"])
 print "\t".join(postags)
 
 parser = Parser()
