@@ -73,7 +73,7 @@ struct Postagger {
     }
   }
 
-  std::vector<std::string> postag(std::vector<std::string> words) {
+  std::vector<std::string> postag(std::vector<std::string>& words) {
     std::vector<std::string> ret;
     if (model == NULL) {
       std::cerr << "Postagger: Model not loaded!" << std::endl;
@@ -81,6 +81,15 @@ struct Postagger {
       postagger_postag(model, words, ret);
     }
     return ret;
+  }
+
+  std::vector<std::string> postag(boost::python::list& words) {
+    std::vector<std::string> vector_of_words;
+
+    for (int i = 0; i < len(words); ++i){
+        vector_of_words.push_back(boost::python::extract<std::string>(words[i]));
+    }
+    return postag(vector_of_words);
   }
 
   void release() {
@@ -253,7 +262,8 @@ BOOST_PYTHON_MODULE(pyltp)
 
   class_<Postagger>("Postagger")
     .def("load", &Postagger::load)
-    .def("postag", &Postagger::postag)
+    .def("postag", static_cast<std::vector<std::string> (Postagger::*)(std::vector<std::string>&)>(&Postagger::postag))
+    .def("postag", static_cast<std::vector<std::string> (Postagger::*)(boost::python::list&)>(&Postagger::postag))
     .def("release", &Postagger::release)
     ;
 
