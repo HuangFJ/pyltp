@@ -17,5 +17,3 @@ install:
     - mkdir -p lib/
     - cp build/lib.*/pyltp.so lib
 
-script:
-    - python example/example.py
