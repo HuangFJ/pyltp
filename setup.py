@@ -13,10 +13,18 @@ patch_libs=os.path.join(patch_root, "libs", "python", "src")
 
 excluded_sources = (
         os.path.join(ltp_source, "segmentor", "otcws.cpp"),
-        os.path.join(ltp_source, "segmentor", "otcws_customized.cpp"),
+        os.path.join(ltp_source, "segmentor", "io.cpp"),
+        os.path.join(ltp_source, "segmentor", "segmentor_frontend.cpp"),
+        os.path.join(ltp_source, "segmentor", "customized_segmentor_frontend.cpp"),
         os.path.join(ltp_source, "postagger", "otpos.cpp"),
+        os.path.join(ltp_source, "postagger", "io.cpp"),
+        os.path.join(ltp_source, "postagger", "postagger_frontend.cpp"),
         os.path.join(ltp_source, "ner", "otner.cpp"),
-        os.path.join(ltp_source, "parser", "lgdpj.cpp"),
+        os.path.join(ltp_source, "ner", "io.cpp"),
+        os.path.join(ltp_source, "ner", "ner_frontend.cpp"),
+        os.path.join(ltp_source, "parser.n", "main.cpp"),
+        os.path.join(ltp_source, "parser.n", "io.cpp"),
+        os.path.join(ltp_source, "parser.n", "parser_frontend.cpp"),
         os.path.join(ltp_source, "srl", "lgsrl.cpp"),
         os.path.join(ltp_thirdparty, "maxent", "train.cpp"),
         os.path.join(ltp_thirdparty, "maxent", "predict.cpp")
@@ -28,9 +36,8 @@ sources += glob.glob(os.path.join(ltp_thirdparty, "maxent", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "postagger", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "ner", "*.cpp"))
-sources += glob.glob(os.path.join(ltp_source, "parser", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "parser.n", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "srl", "*.cpp"))
-sources += glob.glob(os.path.join(ltp_source, "__util", "MyLib.cpp"))
 sources += glob.glob(os.path.join(patch_libs, "*.cpp"))
 sources += glob.glob(os.path.join(patch_libs, "object", "*.cpp"))
 sources += glob.glob(os.path.join(patch_libs, "converter", "*.cpp"))
@@ -40,15 +47,15 @@ sources = [source for source in sources if source not in excluded_sources]
 includes = [
         'ltp/include/',
         'ltp/thirdparty/boost/include/',
+        'ltp/thirdparty/eigen-3.2.4',
         'ltp/thirdparty/maxent/',
         'ltp/src/',
         'ltp/src/segmentor/',
         'ltp/src/postagger/',
         'ltp/src/ner/',
-        'ltp/src/parser',
+        'ltp/src/parser.n/',
         'ltp/src/srl/',
         'ltp/src/utils/',
-        'ltp/src/__util/',
         'ltp/src/srl/',
         'patch/include/'
         ]
@@ -69,7 +76,7 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.1.5',
+    version='0.1.6',
     description='pyltp: the python extension for LTP',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     author='Yijia Liu, Zixiang Xu',
