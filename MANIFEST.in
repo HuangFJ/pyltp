@@ -2,6 +2,7 @@ include README.rst
 include CHANGES.rst
 
 recursive-include src *.cpp
+recursive-include ltp/src *.h
 recursive-include ltp/src/framework *.h *.hpp
 recursive-include ltp/src/utils *.h *.hpp *.tab
 recursive-include ltp/src/segmentor *.cpp *.h *.hpp
