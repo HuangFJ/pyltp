@@ -17,3 +17,5 @@ install:
     - mkdir -p lib/
     - cp build/lib.*/pyltp.so lib
 
+scripts:
+    - echo "done"
