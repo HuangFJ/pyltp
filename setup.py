@@ -76,7 +76,7 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.1.7',
+    version='0.1.8',
     description='pyltp: the python extension for LTP',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     author='Yijia Liu, Zixiang Xu',
