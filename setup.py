@@ -65,7 +65,7 @@ extra_compile_args = []
 if sys.platform == 'win32':
     extra_compile_args += ['/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/EHsc']
 elif sys.platform == 'darwin':
-    extra_compile_args += ['']
+    extra_compile_args += ['-std=c++11', '-Wno-c++11-narrowing']
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
