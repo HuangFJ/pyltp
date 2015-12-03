@@ -44,28 +44,28 @@ pyltp是\ `语言技术平台(Language Technology Platform, LTP) <https://github
 
 * 第一步，安装pyltp
 
-    使用pypi安装
+使用pypi安装
 
-    ::
+::
 
-        $ pip install pyltp
+    $ pip install pyltp
 
-    或从github源代码安装
+或从github源代码安装
 
-    ::
+::
 
-        $ git clone https://github.com/HIT-SCIR/pyltp
-        $ git submodule init
-        $ git submodule update
-        $ python setup.py build
+    $ git clone https://github.com/HIT-SCIR/pyltp
+    $ git submodule init
+    $ git submodule update
+    $ python setup.py build
 
 * 第二步，下载模型文件
 
-    模型版本：3.3.0
+当前模型版本：3.3.0
 
-    下载地址\ `百度云<http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569>`__\
+下载地址\ `百度云 <http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569>`__\
 
-对应
+版本对应
 =====
 
 * LTP版本: 3.3.0
