@@ -69,6 +69,44 @@ struct Segmentor {
   void * model;
 };
 
+struct CustomizedSegmentor {
+  CustomizedSegmentor()
+    : model(NULL) {}
+
+  void load(
+      const std::string& base_model_path,
+      const std::string& customized_model_path,
+      const std::string& lexicon_path = NULL) {
+    if (model == NULL) {
+      model = customized_segmentor_create_segmentor(
+          base_model_path.c_str(),
+          customized_model_path.c_str(),
+          lexicon_path.c_str());
+    } else {
+      std::cerr << "Model reloaded!" << std::endl;
+    }
+  }
+
+  std::vector<std::string> segment(const std::string& sentence) {
+    std::vector<std::string> ret;
+    if (model == NULL) {
+      std::cerr << "Segmentor: Model not loaded!" << std::endl;
+    } else {
+      customized_segmentor_segment(model, sentence.c_str(), ret);
+    }
+    return ret;
+  }
+
+  void release() {
+    if (model != NULL) {
+      customized_segmentor_release_segmentor(model);
+      model = NULL;
+    }
+  }
+
+  void * model;
+};
+
 
 struct Postagger {
   Postagger()
