@@ -37,7 +37,7 @@ struct Segmentor {
     if (model == NULL) {
       model = segmentor_create_segmentor(model_path.c_str());
     } else {
-      std::cerr << "Model reloaded!" << std::endl;
+      std::cerr << "Segmentor: Model reloaded!" << std::endl;
     }
   }
 
@@ -45,7 +45,7 @@ struct Segmentor {
     if (model == NULL) {
       model = segmentor_create_segmentor(model_path.c_str(), lexicon_path.c_str());
     } else {
-      std::cerr << "Model reloaded!" << std::endl;
+      std::cerr << "Segmentor: Model reloaded!" << std::endl;
     }
   }
 
@@ -75,22 +75,34 @@ struct CustomizedSegmentor {
 
   void load(
       const std::string& base_model_path,
+      const std::string& customized_model_path) {
+    if (model == NULL) {
+      model = customized_segmentor_create_segmentor(
+          base_model_path.c_str(),
+          customized_model_path.c_str());
+    } else {
+      std::cerr << "CustomizedSegmentor: Model reloaded!" << std::endl;
+    }
+  }
+
+  void load_with_lexicon(
+      const std::string& base_model_path,
       const std::string& customized_model_path,
-      const std::string& lexicon_path = NULL) {
+      const std::string& lexicon_path) {
     if (model == NULL) {
       model = customized_segmentor_create_segmentor(
           base_model_path.c_str(),
           customized_model_path.c_str(),
           lexicon_path.c_str());
     } else {
-      std::cerr << "Model reloaded!" << std::endl;
+      std::cerr << "CustomizedSegmentor: Model reloaded!" << std::endl;
     }
   }
 
   std::vector<std::string> segment(const std::string& sentence) {
     std::vector<std::string> ret;
     if (model == NULL) {
-      std::cerr << "Segmentor: Model not loaded!" << std::endl;
+      std::cerr << "CustomizedSegmentor: Model not loaded!" << std::endl;
     } else {
       customized_segmentor_segment(model, sentence.c_str(), ret);
     }
@@ -115,6 +127,14 @@ struct Postagger {
   void load(const std::string& model_path) {
     if (model == NULL) {
       model = postagger_create_postagger(model_path.c_str());
+    } else {
+      std::cerr << "Postagger: Model reloaded!" << std::endl;
+    }
+  }
+
+  void load_with_lexicon(const std::string& model_path, const std::string& lexicon_path) {
+    if (model == NULL) {
+      model = postagger_create_postagger(model_path.c_str(), lexicon_path.c_str());
     } else {
       std::cerr << "Postagger: Model reloaded!" << std::endl;
     }
@@ -384,8 +404,16 @@ BOOST_PYTHON_MODULE(pyltp)
     .def("release", &Segmentor::release)
     ;
 
+  class_<CustomizedSegmentor>("CustomizedSegmentor")
+    .def("load", &CustomizedSegmentor::load)
+    .def("load_with_lexicon", &CustomizedSegmentor::load_with_lexicon)
+    .def("segment", &CustomizedSegmentor::segment)
+    .def("release", &CustomizedSegmentor::release)
+    ;
+
   class_<Postagger>("Postagger")
     .def("load", &Postagger::load)
+    .def("load_with_lexicon", &Postagger::load_with_lexicon)
     .def("postag", static_cast<std::vector<std::string> (Postagger::*)(const std::vector<std::string>&)>(&Postagger::postag))
     .def("postag", static_cast<std::vector<std::string> (Postagger::*)(const boost::python::list&)>(&Postagger::postag))
     .def("release", &Postagger::release)
