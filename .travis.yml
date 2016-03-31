@@ -1,21 +1,33 @@
 language:
     - python
 
-os:
-    - linux
-    - osx
+matrix:
+    include:
+        - os: linux
+          sudo: required
+          python: 2.6
+          env: TOXENV=py26
+        - os: linux
+          sudo: required
+          python: 2.7
+          env: TOXENV=py32
+        - os: linux
+          sudo: required
+          python: 3.2
+          env: TOXENV=py32
+        - os: linux
+          sudo: required
+          python: 3.3
+          env: TOXENV=py33
+        - os: osx
+          language: generic
+          env: TOXENV=py27
+        - os: osx
+          language: generic
+          env: TOXENV=py35
 
 install:
-    - export PYLTPVER=$(python setup.py --version)
-    - python setup.py build
-    - python setup.py sdist
-    - cd dist/
-    - tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
-    - cd pyltp-$PYLTPVER
-    - python setup.py build >& /dev/null
-    - cd ../../
-    - mkdir -p lib/
-    - cp build/lib.*/pyltp.so lib
+    - ./.travis/install.sh
 
 script:
     - echo "done"
