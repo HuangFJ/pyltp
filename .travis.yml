@@ -21,10 +21,10 @@ matrix:
           env: TOXENV=py33
         - os: osx
           language: generic
-          env: TOXENV=py27
+          env: TOXENV=py2
         - os: osx
           language: generic
-          env: TOXENV=py35
+          env: TOXENV=py3
 
 install:
     - ./.travis/install.sh

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PY=python
+
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 
     # Install some custom requirements on OS X
@@ -11,6 +13,7 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
             ;;
         py3)
             brew install python3
+            PY = python3
             ;;
     esac
 else
@@ -18,13 +21,16 @@ else
     echo "";
 fi
 
-export PYLTPVER=$(python setup.py --version)
-python setup.py build
-python setup.py sdist
+export PYLTPVER=$(${PY} setup.py --version)
+$PY setup.py build
+$PY setup.py sdist
 cd dist/
 tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
 cd pyltp-$PYLTPVER
-python setup.py build >& /dev/null
+$PY setup.py build >& /dev/null
 cd ../../
 mkdir -p lib/
+ls .
+ls build
+ls build/lib.*/
 cp build/lib.*/pyltp.so lib
