@@ -68,6 +68,8 @@ elif sys.platform == 'darwin':
     os.environ['CC'] = 'clang++'
     os.environ['CXX'] = 'clang++'
     extra_compile_args += ['-std=c++11', '-Wno-c++11-narrowing', '-stdlib=libc++']
+else:
+    extra_compile_args += ['-std=c++0x']
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
@@ -78,7 +80,7 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.1.8',
+    version='0.1.9',
     description='pyltp: the python extension for LTP',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     author='Yijia Liu, Zixiang Xu',
