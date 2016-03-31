@@ -1,6 +1,4 @@
 before_build:
   - git submodule init
   - git submodule update
-
-build:
   - python setup.py build
