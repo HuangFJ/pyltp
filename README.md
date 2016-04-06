@@ -1,6 +1,8 @@
 # pyltp
 
-[![PyPI Status](https://badge.fury.io/py/pyltp.svg)](https://badge.fury.io/py/pyltp)[![Build Status](https://travis-ci.org/HIT-SCIR/pyltp.svg?branch=master)](https://travis-ci.org/HIT-SCIR/pyltp)[![PyPI Downloads](https://img.shields.io/pypi/dm/pyltp.svg)](https://pypi.python.org/pypi/pyltp)
+[![PyPI Status](https://badge.fury.io/py/pyltp.svg)](https://badge.fury.io/py/pyltp)
+[![Build Status](https://travis-ci.org/HIT-SCIR/pyltp.svg?branch=master)](https://travis-ci.org/HIT-SCIR/pyltp)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/pyltp.svg)](https://pypi.python.org/pypi/pyltp)
 
 pyltp是 [语言技术平台（Language Technology Platform, LTP）](https://github.com/HIT-SCIR/ltp) 的Python封装。
 

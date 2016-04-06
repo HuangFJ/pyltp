@@ -82,7 +82,7 @@ setup(
     name='pyltp',
     version='0.1.9',
     description='pyltp: the python extension for LTP',
-    long_description=codecs.open('README.rst', encoding='utf-8').read(),
+    long_description=codecs.open('README.md', encoding='utf-8').read(),
     author='Yijia Liu, Zixiang Xu',
     author_email='ltp-cloud@googlegroups.com',
     url='https://github.com/HIT-SCIR/pyltp',
