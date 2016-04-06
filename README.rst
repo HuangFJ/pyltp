@@ -4,13 +4,9 @@ pyltp: the python extension for LTP
 
 |PyPI Status| |Build Status| |PyPI Downloads|
 
-pyltp是\ `语言技术平台(Language Technology Platform, LTP) <https://github.com/HIT-SCIR/ltp>`__\ 的Python封装。
+pyltp是\ `语言技术平台（Language Technology Platform, LTP）<https://github.com/HIT-SCIR/ltp>`__\ 的Python封装。
 
-本项目旨在使Python用户可以本地调用LTP。
-
-在使用pyltp之前，您需要简要了解
-
-* `什么是语言技术平台(LTP) <http://ltp.readthedocs.org/zh_CN/latest/index.html>`__\ ，它能否帮助您解决问题
+在使用pyltp之前，您需要简要了解：\ `什么是语言技术平台（LTP）<http://ltp.readthedocs.org/zh_CN/latest/index.html>`__\ ，它能否帮助您解决问题
 
 一个简单的例子
 =============
@@ -35,36 +31,33 @@ pyltp是\ `语言技术平台(Language Technology Platform, LTP) <https://github
 安装
 ====
 
-现阶段，pyltp主要在Linux编译测试。我们也欢迎用户提供其他平台的测试结果。
-
 * 第一步，安装pyltp
 
-使用pip安装
+	使用pip安装
 
-::
+	::
 
-    $ pip install pyltp
+    	$ pip install pyltp
 
-或从源代码安装
+	或从源代码安装
 
-::
+	::
 
-    $ git clone https://github.com/HIT-SCIR/pyltp
-    $ git submodule init
-    $ git submodule update
-    $ python setup.py install
+    	$ git clone https://github.com/HIT-SCIR/pyltp
+    	$ git submodule init
+    	$ git submodule update
+    	$ python setup.py install
 
 * 第二步，下载模型文件
 
-当前模型版本：3.3.1
-
-下载地址\ `百度云 <http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569>`__\
+	下载地址\ `百度云 <http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569>`__\，当前模型版本：3.3.1
 
 版本对应
 ========
 
-* LTP版本: 3.3.1
-* 模型版本: 3.3.1
+* pyltp版本：0.1.9
+* LTP版本：3.3.1
+* 模型版本：3.3.1
 
 作者
 ====
