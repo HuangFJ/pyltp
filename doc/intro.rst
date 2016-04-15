@@ -1,5 +1,5 @@
-欢迎使用pyltp
+欢迎使用 pyltp
 
-pyltp是 `语言技术平台（Language Technology Platform, LTP）<https://github.com/HIT-SCIR/ltp>`_ 的Python封装。
+pyltp 是 `语言技术平台（Language Technology Platform, LTP）<https://github.com/HIT-SCIR/ltp>`_ 的 Python封装。
 
-关于LTP的详细信息请参考，LTP的文档
+如需了解 LTP 的详细信息，请参考 LTP 的 `文档 <https://github.com/HIT-SCIR/ltp>`_。

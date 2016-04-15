@@ -10,7 +10,6 @@
 
 .. toctree::
    :maxdepth: 2
-   start
    install
    api
    changelog
