@@ -4,7 +4,7 @@
 使用 pip 安装
 -------------
 
-使用 pip 安装前，请确保您已安装了 `pip <https://pip.pypa.io/>`_
+使用 pip 安装前，请确保您已安装了 `pip <https://pip.pypa.io/>`_ ::
 
     $ pip install pyltp
 
@@ -18,7 +18,7 @@
 从源码安装
 ---------
 
-您也可以选择从源代码编译安装
+您也可以选择从源代码编译安装 ::
 
     $ git clone https://github.com/HIT-SCIR/pyltp
     $ git submodule init
