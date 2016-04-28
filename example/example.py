@@ -3,14 +3,16 @@
 import sys, os
 
 ROOTDIR = os.path.join(os.path.dirname(__file__), os.pardir)
-sys.path.append(os.path.join(ROOTDIR, "lib"))
+sys.path = [os.path.join(ROOTDIR, "lib")] + sys.path
 
 # Set your own model path
 MODELDIR=os.path.join(ROOTDIR, "ltp_data")
 
-from pyltp import Segmentor, Postagger, Parser, NamedEntityRecognizer, SementicRoleLabeller
+from pyltp import SentenceSplitter, Segmentor, Postagger, Parser, NamedEntityRecognizer, SementicRoleLabeller
 
-sentence = "中国进出口银行与中国银行加强合作"
+paragraph = '中国进出口银行与中国银行加强合作。中国进出口银行与中国银行加强合作！'
+
+sentence = SentenceSplitter.split(paragraph)[0]
 
 segmentor = Segmentor()
 segmentor.load(os.path.join(MODELDIR, "cws.model"))
