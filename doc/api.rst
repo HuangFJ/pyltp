@@ -15,6 +15,13 @@ pyltp 的所有输入的分析文本和输出的结果的编码均为 UTF-8。
 分句
 -----
 
+使用 pyltp 进行分句示例如下 ::
+
+    # -*- coding: utf-8 -*-
+    from pyltp import SentenceSplitter
+    sents = SentenceSplitter.split('元芳你怎么看？我就趴窗口上看呗！')  # 分句
+    print '\n'.join(sents)
+
 
 分词
 -----
@@ -26,7 +33,7 @@ pyltp 的所有输入的分析文本和输出的结果的编码均为 UTF-8。
     segmentor = Segmentor()  # 初始化实例
     segmentor.load('/path/to/your/model')  # 加载模型
     words = segmentor.segment('元芳你怎么看')  # 分词
-    print '|'.join(words)
+    print '\t'.join(words)
     segmentor.release()  # 释放模型
 
 :file:`/path/to/your/model` 请替换成 LTP 分词模型文件路径，默认模型文件名为 :file:`cws.model` 。
@@ -120,7 +127,7 @@ pyltp 词性标注同样支持用户的外部词典。词性标注外部词典�
     print '\t'.join(netags)
     recognizer.release()  # 释放模型
 
-其中，:code:`words` 和:code:`postags` 分别为分词和词性标注的结果。
+其中，:code:`words` 和 :code:`postags` 分别为分词和词性标注的结果。
 
 
 LTP 提供的命名实体类型为:人名、地名、机构名，详细请参考 `命名实体识别标注集 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id4>`_ 。
@@ -169,4 +176,4 @@ pyltp 暂不提供语义依存分析功能。若需使用该功能，请使用 `
 完整示例代码
 -------------
 
-完整的示例代码可以参考:file:`example/example.py` 。
+完整的示例代码可以参考 :file:`example/example.py` 。
