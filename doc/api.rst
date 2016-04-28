@@ -99,8 +99,10 @@ pyltp 支持使用用户训练好的个性化模型。关于个性化模型的�
     postags = postagger.postag(words)  # 词性标注
     print '\t'.join(postags)
     postag.release()  # 释放模型
-    
-参数 :code:`words` 支持是列表，例如 ::
+
+模型文件名为 :file:`pos.model` 。
+
+参数 :code:`words` 支持列表，例如 ::
 
     words = ['元芳', '你', '怎么', '看']
 
@@ -127,6 +129,8 @@ pyltp 词性标注同样支持用户的外部词典。词性标注外部词典�
     print '\t'.join(netags)
     recognizer.release()  # 释放模型
 
+模型文件名为 :file:`ner.model` 。
+
 其中，:code:`words` 和 :code:`postags` 分别为分词和词性标注的结果。
 
 
@@ -145,7 +149,9 @@ LTP 提供的命名实体类型为:人名、地名、机构名，详细请参考
     print "\t".join("%d:%s" % (arc.head, arc.relation) for arc in arcs)
     parser.release()  # 释放模型
 
-其中，:code:`words` 和:code:`postags` 分别为分词和词性标注的结果。
+模型文件名为 :file:`parser.model` 。
+
+其中，:code:`words` 和 :code:`postags` 分别为分词和词性标注的结果。
 
 标注集请参考 `依存句法关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id5>`_ 。
 
@@ -164,6 +170,8 @@ LTP 提供的命名实体类型为:人名、地名、机构名，详细请参考
             ["%s:(%d,%d)" % (arg.name, arg.range.start, arg.range.end) for arg in role.arguments])
     labeller.release()  # 释放模型
 
+
+模型目录名为 :file:`srl` 。
 
 标注集请参考 `语义角色关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id6>`_ 。
 
