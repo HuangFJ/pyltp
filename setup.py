@@ -33,6 +33,7 @@ excluded_sources = (
 sources = [os.path.join("src", "pyltp.cpp")]
 sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "regex", "src", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_thirdparty, "maxent", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "splitsnt", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "postagger", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "ner", "*.cpp"))
@@ -50,6 +51,7 @@ includes = [
         'ltp/thirdparty/eigen-3.2.4',
         'ltp/thirdparty/maxent/',
         'ltp/src/',
+        'ltp/src/splitsnt',
         'ltp/src/segmentor/',
         'ltp/src/postagger/',
         'ltp/src/ner/',

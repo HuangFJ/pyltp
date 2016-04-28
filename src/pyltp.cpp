@@ -7,12 +7,14 @@
  * the project is perserved. But interface is adopted from XML level to library level
  * to allow more flexible usage.
  *
- *  @author: LIU, Yijia <yjliu@ir.hit.edu.cn>
+ *  @author: Yijia Liu <yjliu@ir.hit.edu.cn>
+ *  @author: Zixiang Xu <zxxu@ir.hit.edu.cn>
  */
 #include <iostream>
 #include <vector>
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+#include "SplitSentence.h"
 #include "segment_dll.h"
 #include "postag_dll.h"
 #include "parser_dll.h"
@@ -28,6 +30,16 @@ std::vector<T> py_list_to_std_vector(const boost::python::list& l){
   }
   return v;
 }
+
+struct SentenceSplitter {
+  SentenceSplitter() {}
+
+  static std::vector<std::string> split(const std::string& paragraph) {
+    std::vector<std::string> ret;
+    SplitSentence(paragraph, ret);
+    return ret;
+  }
+};
 
 struct Segmentor {
   Segmentor()
@@ -396,6 +408,11 @@ BOOST_PYTHON_MODULE(pyltp)
 
   class_<std::vector<ParseResult > >("VectorOfParseResult")
     .def(vector_indexing_suite<std::vector<ParseResult> >() );
+
+  class_<SentenceSplitter>("SentenceSplitter")
+    .def("split", &SentenceSplitter::split)
+    .staticmethod("split")
+    ;
 
   class_<Segmentor>("Segmentor")
     .def("load", &Segmentor::load)
