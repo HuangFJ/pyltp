@@ -15,3 +15,9 @@ build
 include/
 lib/
 bin/
+
+*.swp
+doc/_build
+doc/_static
+doc/_templates
+!doc/Makefile
