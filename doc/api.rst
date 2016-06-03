@@ -98,7 +98,7 @@ pyltp 支持使用用户训练好的个性化模型。关于个性化模型的�
     postagger.load('/path/to/your/model')  # 加载模型
     postags = postagger.postag(words)  # 词性标注
     print '\t'.join(postags)
-    postag.release()  # 释放模型
+    postagger.release()  # 释放模型
 
 模型文件名为 :file:`pos.model` 。
 
