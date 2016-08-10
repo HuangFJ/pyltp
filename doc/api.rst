@@ -112,9 +112,10 @@ pyltp 支持使用用户训练好的个性化模型。关于个性化模型的�
 
 模型文件名为 :file:`pos.model` 。
 
-参数 :code:`words` 支持列表，例如 ::
+参数 :code:`words` 是分词模块的返回值，也支持Python原生的列表类型，例如 ::
 
     words = ['元芳', '你', '怎么', '看']
+    postags = postagger.postag(words)
 
 LTP 使用 863 词性标注集，详细请参考 `词性标注集 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id3>`_ 。
     
