@@ -38,7 +38,17 @@ pyltp 的所有输入的分析文本和输出的结果的编码均为 UTF-8。
 
 :file:`/path/to/your/model` 请替换成 LTP 分词模型文件路径，默认模型文件名为 :file:`cws.model` 。
 
-:code:`words = segmentor.segment(u'元芳你怎么看')` 的返回值类型是
+:code:`words = segmentor.segment('元芳你怎么看')` 的返回值类型是native的VectorOfString类型，可以使用list转换成Python的列表类型，例如 ::
+
+    ...
+    >>> words = segmentor.segment('元芳你怎么看')
+    >>> type(words)
+    <class 'pyltp.VectorOfString'>
+    >>> words_list = list(words)
+    >>> type(words_list)
+    <type 'list'>
+    >>> print words_list
+    ['\xe5\xae\xa2\xe6\x9c\x8d', '\xe5\xa4\xaa', '\xe7\xb3\x9f\xe7\xb3\x95', '\xe4\xba\x86']
 
 使用分词外部词典
 ~~~~~~~~~~~~~~~~
