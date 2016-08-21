@@ -164,6 +164,8 @@ LTP 提供的命名实体类型为:人名、地名、机构名，详细请参考
 
 其中，:code:`words` 和 :code:`postags` 分别为分词和词性标注的结果。
 
+:code:`arc.head` 表示依存弧的父节点词的索引，:code:`arc.relation` 表示依存弧的关系。
+
 标注集请参考 `依存句法关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id5>`_ 。
 
 语义角色标注
@@ -183,6 +185,8 @@ LTP 提供的命名实体类型为:人名、地名、机构名，详细请参考
 
 
 模型目录名为 :file:`srl` 。
+
+:code:`arg.name` 表示语义角色关系，:code:`arg.range.start` 表示起始词位置，:code:`arg.range.end` 表示结束位置。
 
 标注集请参考 `语义角色关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id6>`_ 。
 
