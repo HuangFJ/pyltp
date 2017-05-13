@@ -21,5 +21,11 @@ else
     echo "";
 fi
 
-$PY --version
-$PY setup.py install
+echo $(${PY} --version)
+export PYLTPVER=$(${PY} setup.py --version)
+$PY setup.py build
+$PY setup.py sdist
+cd dist/
+tar zxvf pyltp-$PYLTPVER.tar.gz > /dev/null
+cd pyltp-$PYLTPVER
+$PY setup.py build >& /dev/null
