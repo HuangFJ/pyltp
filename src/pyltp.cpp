@@ -287,7 +287,7 @@ struct SementicRoleLabeller {
     : loaded(false) {}
 
   void load(const std::string& model_path) {
-    loaded = (SRL_LoadResource(model_path) == 0);
+    loaded = (srl_load_resource(model_path) == 0);
   }
 
   std::vector<SementicRole> label(
@@ -306,7 +306,7 @@ struct SementicRoleLabeller {
     if (!loaded) {
       std::cerr << "SRL: Model not loaded!" << std::endl;
     } else {
-      DoSRL(words, postags, netags, tmp_parse, ret);
+      srl_dosrl(words, postags, tmp_parse, ret);
     }
     return ret;
   }
@@ -370,7 +370,7 @@ struct SementicRoleLabeller {
 
   void release() {
     if (loaded) {
-      SRL_ReleaseResource();
+      srl_release_resource();
     }
   }
 

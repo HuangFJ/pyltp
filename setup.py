@@ -25,7 +25,11 @@ excluded_sources = (
         os.path.join(ltp_source, "parser.n", "main.cpp"),
         os.path.join(ltp_source, "parser.n", "io.cpp"),
         os.path.join(ltp_source, "parser.n", "parser_frontend.cpp"),
-        os.path.join(ltp_source, "srl", "lgsrl.cpp"),
+        os.path.join(ltp_source, "srl", "Pi", "train.cpp"),
+        os.path.join(ltp_source, "srl", "Pi", "pred.cpp"),
+        os.path.join(ltp_source, "srl", "Srl", "train.cpp"),
+        os.path.join(ltp_source, "srl", "Srl", "pred.cpp"),
+        os.path.join(ltp_source, "srl", "tool", "merge.cpp"),
         os.path.join(ltp_thirdparty, "maxent", "train.cpp"),
         os.path.join(ltp_thirdparty, "maxent", "predict.cpp")
         )
@@ -38,6 +42,8 @@ sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "postagger", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "ner", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "parser.n", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "srl", "*/*/*.cpp"))
+sources += glob.glob(os.path.join(ltp_source, "srl", "*/*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "srl", "*.cpp"))
 sources += glob.glob(os.path.join(patch_libs, "*.cpp"))
 sources += glob.glob(os.path.join(patch_libs, "object", "*.cpp"))
@@ -48,7 +54,8 @@ sources = [source for source in sources if source not in excluded_sources]
 includes = [
         'ltp/include/',
         'ltp/thirdparty/boost/include/',
-        'ltp/thirdparty/eigen-3.2.4',
+        'ltp/thirdparty/dynet/',
+        'ltp/thirdparty/eigen/',
         'ltp/thirdparty/maxent/',
         'ltp/src/',
         'ltp/src/splitsnt',
@@ -57,8 +64,9 @@ includes = [
         'ltp/src/ner/',
         'ltp/src/parser.n/',
         'ltp/src/srl/',
+        'ltp/src/srl/include',
+        'ltp/src/srl/common',
         'ltp/src/utils/',
-        'ltp/src/srl/',
         'patch/include/'
         ]
 
@@ -69,7 +77,13 @@ if sys.platform == 'win32':
 elif sys.platform == 'darwin':
     os.environ['CC'] = 'clang++'
     os.environ['CXX'] = 'clang++'
-    extra_compile_args += ['-std=c++11', '-Wno-c++11-narrowing', '-stdlib=libc++']
+    extra_compile_args += ['-std=c++11',
+                           '-Wno-c++11-narrowing',
+                           '-Wno-unused-local-typedef',
+                           '-Wno-unused-variable',
+                           '-Wno-reorder',
+                           '-Wno-sign-compare',
+                           '-stdlib=libc++']
 else:
     extra_compile_args += ['-std=c++0x']
 

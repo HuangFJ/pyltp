@@ -15,9 +15,18 @@ build
 include/
 lib/
 bin/
+dist
+patch
+pyltp.egg-info
 
 *.swp
 doc/_build
 doc/_static
 doc/_templates
 !doc/Makefile
+
+###############
+# data        #
+###############
+ltp_data
+
