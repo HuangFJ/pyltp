@@ -30,6 +30,11 @@ patch_root="patch"
 patch_libs=os.path.join(patch_root, "libs", "python", "src")
 
 excluded_sources = (
+    # libs
+        os.path.join(ltp_thirdparty, "maxent", "train.cpp"),
+        os.path.join(ltp_thirdparty, "maxent", "predict.cpp"),
+        os.path.join(ltp_thirdparty, "dynet", "dynet", "cuda.cc"),
+    # source
         os.path.join(ltp_source, "segmentor", "otcws.cpp"),
         os.path.join(ltp_source, "segmentor", "io.cpp"),
         os.path.join(ltp_source, "segmentor", "segmentor_frontend.cpp"),
@@ -47,13 +52,18 @@ excluded_sources = (
         os.path.join(ltp_source, "srl", "Pi", "pred.cpp"),
         os.path.join(ltp_source, "srl", "Srl", "train.cpp"),
         os.path.join(ltp_source, "srl", "Srl", "pred.cpp"),
-        os.path.join(ltp_source, "srl", "tool", "merge.cpp"),
-        os.path.join(ltp_thirdparty, "maxent", "train.cpp"),
-        os.path.join(ltp_thirdparty, "maxent", "predict.cpp")
+        os.path.join(ltp_source, "srl", "tool", "merge.cpp")
         )
 
 sources = [os.path.join("src", "pyltp.cpp")]
+# libs
+sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "program_options", "src", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "regex", "src", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "serialization", "src", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_thirdparty, "boost", "libs", "smart_ptr", "src", "*.cpp"))
+sources += glob.glob(os.path.join(ltp_thirdparty, "dynet", "dynet", "*.cc"))
+
+# source
 sources += glob.glob(os.path.join(ltp_thirdparty, "maxent", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "splitsnt", "*.cpp"))
 sources += glob.glob(os.path.join(ltp_source, "segmentor", "*.cpp"))
