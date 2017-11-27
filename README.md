@@ -43,7 +43,7 @@ segmentor.release()
     $ cd pyltp
 	$ git submodule init
 	$ git submodule update
-	$ python setup.py install
+	$ python setup.py install # Mac系统出现版本问题使用 MACOSX_DEPLOYMENT_TARGET=10.7 python setup.py install
 	```
 
 * 第二步，下载模型文件
