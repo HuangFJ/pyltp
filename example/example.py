@@ -6,7 +6,7 @@ ROOTDIR = os.path.join(os.path.dirname(__file__), os.pardir)
 sys.path = [os.path.join(ROOTDIR, "lib")] + sys.path
 
 # Set your own model path
-MODELDIR=os.path.join(ROOTDIR, "ltp_data")
+MODELDIR=os.path.join(ROOTDIR, "./ltp_data")
 
 from pyltp import SentenceSplitter, Segmentor, Postagger, Parser, NamedEntityRecognizer, SementicRoleLabeller
 
@@ -39,7 +39,7 @@ print("\t".join(netags))
 
 labeller = SementicRoleLabeller()
 labeller.load(os.path.join(MODELDIR, "pisrl.model"))
-roles = labeller.label(words, postags, netags, arcs)
+roles = labeller.label(words, postags, arcs)
 
 for role in roles:
     print(role.index, "".join(

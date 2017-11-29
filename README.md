@@ -1,4 +1,4 @@
-# pyltp
+﻿# pyltp
 
 [![PyPI Status](https://badge.fury.io/py/pyltp.svg)](https://badge.fury.io/py/pyltp)
 [![Readthedocs](https://readthedocs.org/projects/pyltp/badge/?version=latest)](http://pyltp.readthedocs.io/)
@@ -37,10 +37,9 @@ segmentor.release()
 	$ pip install pyltp
 	```
 	或从源代码安装
-	
+
 	```
 	$ git clone https://github.com/HIT-SCIR/pyltp
-    $ cd pyltp
 	$ git submodule init
 	$ git submodule update
 	$ python setup.py install # Mac系统出现版本问题使用 MACOSX_DEPLOYMENT_TARGET=10.7 python setup.py install
@@ -48,13 +47,13 @@ segmentor.release()
 
 * 第二步，下载模型文件
 
-	[百度云](http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569)，当前模型版本 3.3.1
+	[七牛云](http://ltp.ai/download.html)，当前模型版本 3.4.0
 
 ## 版本对应
 
-* pyltp 版本：0.1.9
-* LTP 版本：3.3.2
-* 模型版本：3.3.1
+* pyltp 版本：0.1.10
+* LTP 版本：3.4.0
+* 模型版本：3.4.0
 
 ## 作者
 

@@ -10,7 +10,7 @@ recursive-include ltp/src/postagger *.cpp *.h *.hpp
 recursive-include ltp/src/ner *.cpp *.h *.hpp
 recursive-include ltp/src/parser.n *.cpp *.h *.hpp
 recursive-include ltp/src/srl *.cpp *.h
-recursive-include ltp/thirdparty/boost/libs *.h *.hpp *.cpp
+recursive-include ltp/thirdparty/boost *.h *.hpp *.cpp
 recursive-include ltp/thirdparty/eigen *
 recursive-include ltp/thirdparty/dynet *
 recursive-include ltp/thirdparty/maxent *.h *.cpp
