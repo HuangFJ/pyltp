@@ -110,7 +110,7 @@ setup(
     version='0.1.10',
     description='pyltp: the python extension for LTP',
     long_description=codecs.open('README.md', encoding='utf-8').read(),
-    author='Yijia Liu, Zixiang Xu',
+    author='Yijia Liu, Zixiang Xu, Yang Liu',
     author_email='ltp-cloud@googlegroups.com',
     url='https://github.com/HIT-SCIR/pyltp',
     classifiers=[
