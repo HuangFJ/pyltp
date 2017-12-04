@@ -21,7 +21,7 @@ def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=N
     list(multiprocessing.pool.ThreadPool(N).imap(_single_compile,objects))
     return objects
 import distutils.ccompiler
-distutils.ccompiler.CCompiler.compile=parallelCCompile
+#distutils.ccompiler.CCompiler.compile=parallelCCompile
 
 
 ltp_root="ltp"
