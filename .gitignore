@@ -16,7 +16,6 @@ include/
 lib/
 bin/
 dist
-patch
 pyltp.egg-info
 
 *.swp
