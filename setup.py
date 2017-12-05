@@ -107,7 +107,6 @@ if sys.platform == 'win32':
 elif sys.platform == 'darwin':
     os.environ['CC'] = 'clang++'
     os.environ['CXX'] = 'clang++'
-    os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.7'
     extra_compile_args += ['-std=c++11',
                            '-Wno-c++11-narrowing',
                            '-Wno-unused-local-typedef',
@@ -117,6 +116,9 @@ elif sys.platform == 'darwin':
                            '-stdlib=libc++']
 else:
     extra_compile_args += ['-std=c++0x']
+
+if not 'MACOSX_DEPLOYMENT_TARGET' in os.environ:
+    os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.7'
 
 ext_modules = [Extension('pyltp',
     include_dirs=includes,
