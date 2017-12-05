@@ -107,6 +107,7 @@ if sys.platform == 'win32':
 elif sys.platform == 'darwin':
     os.environ['CC'] = 'clang++'
     os.environ['CXX'] = 'clang++'
+    os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.7'
     extra_compile_args += ['-std=c++11',
                            '-Wno-c++11-narrowing',
                            '-Wno-unused-local-typedef',
