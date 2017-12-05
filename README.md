@@ -51,7 +51,7 @@ segmentor.release()
 
 ## 版本对应
 
-* pyltp 版本：0.1.10
+* pyltp 版本：0.2.0
 * LTP 版本：3.4.0
 * 模型版本：3.4.0
 
