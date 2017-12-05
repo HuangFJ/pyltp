@@ -239,6 +239,8 @@ B、I、E、S位置标签和实体类型标签之间用一个横线 :code:`-` �
 
 :code:`arc.relation` 表示依存弧的关系。
 
+:code:`arc.head` 表示依存弧的父节点词的索引，:code:`arc.relation` 表示依存弧的关系。
+
 标注集请参考 `依存句法关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id5>`_ 。
 
 语义角色标注
@@ -281,6 +283,8 @@ B、I、E、S位置标签和实体类型标签之间用一个横线 :code:`-` �
 
 例如上面的例子，由于结果输出一行，所以“元芳你怎么看”有一组语义角色。
 其谓词索引为3，即“看”。这个谓词有三个语义角色，范围分别是(0,0)即“元芳”，(1,1)即“你”，(2,2)即“怎么”，类型分别是A0、A0、ADV。
+
+:code:`arg.name` 表示语义角色关系，:code:`arg.range.start` 表示起始词位置，:code:`arg.range.end` 表示结束位置。
 
 标注集请参考 `语义角色关系 <http://ltp.readthedocs.org/zh_CN/latest/appendix.html#id6>`_ 。
 
