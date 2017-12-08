@@ -103,7 +103,7 @@ includes = [
 extra_compile_args = []
 
 if sys.platform == 'win32':
-    extra_compile_args += ['/W1', '/DNOMINMAX', '/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/DBOOST_ALL_NO_LIB', '/D_WINDOWS', '/EHsc']
+    extra_compile_args += ['/DNOMINMAX', '/DBOOST_PYTHON_SOURCE', '/DBOOST_PYTHON_STATIC_LIB', '/DBOOST_ALL_NO_LIB', '/D_WINDOWS', '/EHsc']
 elif sys.platform == 'darwin':
     os.environ['CC'] = 'clang++'
     os.environ['CXX'] = 'clang++'
