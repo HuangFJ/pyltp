@@ -3,4 +3,4 @@ before_build:
   - git submodule update
   
 build_script:
-  - python setup.py build
+  - python3 setup.py build
