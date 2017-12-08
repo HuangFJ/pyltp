@@ -14,4 +14,4 @@ environment:
     - PY: C:\Python35-x64
 
 build_script:
-  - %PY% setup.py build
+  - "%PY% setup.py build"
