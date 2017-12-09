@@ -8,12 +8,8 @@ image:
 
 environment:
   matrix:
-    - PY: C:\Python36
     - PY: C:\Python36-x64
-    - PY: C:\Python35
     - PY: C:\Python35-x64
-    - PY: C:\Python34
-    - PY: C:\Python34-x64
 
 build_script:
   - "%PY%\\python.exe setup.py build"
