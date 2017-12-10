@@ -11,12 +11,9 @@ pyltp 是 `LTP <https://github.com/HIT-SCIR/ltp>`_ 的 Python 封装，提供了
 请先下载完整的 LTP 模型文件
 
 * 下载地址 - `百度云 <http://pan.baidu.com/share/link?shareid=1988562907&uk=2738088569>`_
-* 当前模型版本 - 3.3.1
+* 当前模型版本 - 3.4.0
 
 请确保下载的模型版本与当前版本的 pyltp 对应，否则会导致程序无法正确加载模型。
-
-如果您是从 Github 获取的源代码，其中包含的 :file:`ltp_data` 目录仅为测试用的模型文件，不能产生正确的分析结果。
-
 
 请注意编码
 ----------
@@ -262,9 +259,8 @@ B、I、E、S位置标签和实体类型标签之间用一个横线 :code:`-` �
 
     words = ['元芳', '你', '怎么', '看']
     postags = ['nh', 'r', 'r', 'v']
-    netags = ['S-Nh', 'O', 'O', 'O']
     # arcs 使用依存句法分析的结果
-    roles = labeller.label(words, postags, netags, arcs)  # 语义角色标注
+    roles = labeller.label(words, postags, arcs)  # 语义角色标注
 
     # 打印结果
     for role in roles:
