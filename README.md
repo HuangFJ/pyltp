@@ -10,6 +10,14 @@ pyltp 是 [语言技术平台（Language Technology Platform, LTP）](https://gi
 
 在使用 pyltp 之前，您需要简要了解 [语言技术平台（LTP）](http://ltp.readthedocs.org/zh_CN/latest/) 能否帮助您解决问题。
 
+## 依赖支持情况
+|               | Py2.6 | Py2.6 | Py3.4 | Py3.5 | Py3.6 | conda-python |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| Linux         | 支持   | 支持  | 支持   | 支持   | 支持  | 不支持  |
+| Mac OS        | 支持   | 支持  | 支持   | 支持   | 支持  | 不支持  |
+| Windows VS2015| 不支持 | 不支持 | 不支持 | 支持   | 支持  | 不支持  |
+| Windows VS2017| 不支持 | 不支持 | 不支持 | 支持   | 支持  | 不支持  |
+
 ## 一个简单的例子
 
 下面是一个使用 pyltp 进行分词的例子
