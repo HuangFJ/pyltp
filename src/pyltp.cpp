@@ -334,6 +334,14 @@ struct SementicRoleLabeller {
     return label(py_list_to_std_vector<std::string>(words), py_list_to_std_vector<std::string>(postags), parse);
   }
 
+  std::vector<SementicRole> label(
+      const boost::python::list& words,
+      const boost::python::list& postags,
+      const boost::python::list& parse
+      ) {
+    return label(words, postags, py_list_to_std_vector<ParseResult>(parse));
+  }
+
   void release() {
     if (loaded) {
       srl_release_resource();
@@ -427,6 +435,7 @@ BOOST_PYTHON_MODULE(pyltp)
     .def("label", static_cast<std::vector<SementicRole> (SementicRoleLabeller::*)(const std::vector<std::string>&, const boost::python::list&, const std::vector<ParseResult>&)>(&SementicRoleLabeller::label))
     .def("label", static_cast<std::vector<SementicRole> (SementicRoleLabeller::*)(const boost::python::list&, const std::vector<std::string>&, const std::vector<ParseResult>&)>(&SementicRoleLabeller::label))
     .def("label", static_cast<std::vector<SementicRole> (SementicRoleLabeller::*)(const boost::python::list&, const boost::python::list&, const std::vector<ParseResult>&)>(&SementicRoleLabeller::label))
+    .def("label", static_cast<std::vector<SementicRole> (SementicRoleLabeller::*)(const boost::python::list&, const boost::python::list&, const boost::python::list&)>(&SementicRoleLabeller::label))
     .def("release", &SementicRoleLabeller::release)
     ;
 }

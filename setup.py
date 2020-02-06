@@ -129,7 +129,7 @@ ext_modules = [Extension('pyltp',
 
 setup(
     name='pyltp',
-    version='0.2.1',
+    version='0.2.3',
     description='pyltp: the python extension for LTP',
     long_description=codecs.open('README.md', encoding='utf-8').read(),
     author='Yijia Liu, Zixiang Xu, Yang Liu',
