@@ -1,0 +1,17 @@
+include README.md
+include CHANGES.rst
+
+recursive-include src *.cpp
+recursive-include ltp/src *.h
+recursive-include ltp/src/framework *.h *.hpp
+recursive-include ltp/src/utils *.h *.hpp *.tab
+recursive-include ltp/src/segmentor *.cpp *.h *.hpp
+recursive-include ltp/src/postagger *.cpp *.h *.hpp
+recursive-include ltp/src/ner *.cpp *.h *.hpp
+recursive-include ltp/src/parser.n *.cpp *.h *.hpp
+recursive-include ltp/src/srl *.cpp *.h
+recursive-include ltp/thirdparty/boost *.h *.hpp *.cpp *.ipp
+recursive-include ltp/thirdparty/eigen *
+recursive-include ltp/thirdparty/dynet *
+recursive-include ltp/thirdparty/maxent *.h *.cpp
+recursive-include patch *.h *.hpp *.cpp
