@@ -1,0 +1,15 @@
+before_build:
+  - git submodule init
+  - git submodule update
+
+image:
+  - Visual Studio 2015
+  - Visual Studio 2017
+
+environment:
+  matrix:
+    - PY: C:\Python36-x64
+    - PY: C:\Python35-x64
+
+build_script:
+  - "%PY%\\python.exe setup.py build"
